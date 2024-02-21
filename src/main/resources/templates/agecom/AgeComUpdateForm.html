@@ -113,37 +113,49 @@
     <hr>
     <br>
     <div class="create">
-        <form action="/agecom/update" method="post" id="updateForm">
+        <form action="/agecom/update" method="post" id="updateForm"  onsubmit="return showModificationAlert()">
+            <input type="hidden" name="ageComNo" th:value="${ageComDTO.ageComNo}">
             <label>
-                <input id = "title" type="text" name="title" th:value="${ageComDTO.ageComTitle}">
-
+                <input id = "ageComTitle" type="text" name="ageComTitle" th:value="${ageComDTO.ageComTitle}">
             </label>
             <br>
             <br>
             <label>
-                <input id="nickname" type="text" name="nickname" th:value="${ageComDTO.memberNick}" readonly>
+                <input id="memberNick" type="text" name="memberNick" th:value="${ageComDTO.memberNick}" readonly>
             </label>
             <br><br>
+            <dl>
+                <dd th:text="${#dates.format(ageComDTO.ageComDate, 'yyyy-MM-dd HH:mm:ss')}"></dd>
+                <dd th:text="${ageComDTO.ageComViews}"></dd>
+            </dl>
             <label>
                 <textarea cols="100" rows="15" style="display: inline-block; resize: none;" maxlength="1000" id="ageComDetail" name="ageComDetail" th:text="${ageComDTO.ageComDetail}"></textarea>
             </label>
             <br><br>
             <label>
-                <input id="cate" type="hidden" name="cate" th:value="${ageComDTO.cateNo}" readonly>
+                <input id="cateNo" type="hidden" name="cateNo" th:value="${ageComDTO.cateNo}" readonly>
             </label>
+
+            <input type="hidden" name="ageComDate" th:value="${#dates.format(ageComDTO.ageComDate, 'yyyy-MM-dd HH:mm:ss')}">
+
+            <input type="hidden" name="ageComViews" th:value="${ageComDTO.ageComViews}">
+
 <!--            <label>이미지 첨부 :-->
 <!--                <input type="file" name="file">-->
 <!--            </label>-->
-
             <br>
             <button type="button" onclick="location.href='AgeComList'">취소하기</button>
             <button type="submit">수정하기</button>
-
-
         </form>
     </div>
 </div>
 <div th:replace="common/footer :: footer"></div>
+<script>
+    function showModificationAlert() {
+        alert("수정이 완료되었습니다!");
+        return true;
+    }
+</script>
 </body>
 
 </html>

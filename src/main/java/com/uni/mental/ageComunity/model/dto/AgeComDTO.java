@@ -1,6 +1,8 @@
 package com.uni.mental.ageComunity.model.dto;
-import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
+
 
 public class AgeComDTO {
     private Integer ageComNo;
@@ -8,11 +10,13 @@ public class AgeComDTO {
     private String ageComTitle;
     private String ageComDetail;
     private String memberNick;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")  // Specify the date format
     private Date ageComDate;
-    private int ageComViews;
+    private Integer ageComViews = 0; // 기본값으로 0 설정
 
 
-    public AgeComDTO(int ageComNo, int cateNo, String ageComTitle, String ageComDetail, String memberNick, Date ageComDate, int ageComViews) {
+    public AgeComDTO(Integer ageComNo, int cateNo, String ageComTitle, String ageComDetail, String memberNick, Date ageComDate, Integer ageComViews) {
         this.ageComNo = ageComNo;
         this.cateNo = cateNo;
         this.ageComTitle = ageComTitle;
@@ -22,15 +26,15 @@ public class AgeComDTO {
         this.ageComViews = ageComViews;
     }
 
-    public int getAgeComNo() {
+    public Integer getAgeComNo() {
         return ageComNo;
     }
 
-    public void setAgeComNo(int ageComNo) {
+    public void setAgeComNo(Integer ageComNo) {
         this.ageComNo = ageComNo;
     }
 
-    public int getCateNo() {
+    public Integer getCateNo() {
         return cateNo;
     }
 
@@ -70,7 +74,7 @@ public class AgeComDTO {
         this.ageComDate = ageComDate;
     }
 
-    public int getAgeComViews() {
+    public Integer getAgeComViews() {
         return ageComViews;
     }
 

@@ -10,9 +10,10 @@ public interface AgeComDAO {
 
     List<AgeComDTO> findAllView();
     AgeComDTO selectOne(int no);
-    int registAgeCom(AgeComDTO ageCom);
-    int updateAgeCom(AgeComDTO ageCom);
+    int registAgeCom(AgeComDTO ageComDTO);
+    int updateAgeCom(AgeComDTO ageComDTO);
 
     int deleteAgeCom(int no);
 
+    void updateViewCount(int ageComNo);
 }

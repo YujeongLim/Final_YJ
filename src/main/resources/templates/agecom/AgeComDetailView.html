@@ -103,20 +103,19 @@
     </ul>
 </header>
 <div class="card">
+    <div class="title">
+        <h3 th:text="${ageComDTO.ageComTitle}"></h3>
+        <dl>
+            <dd th:text="${ageComDTO.memberNick}"></dd>
+            <dd th:text="${#dates.format(ageComDTO.ageComDate, 'yyyy-MM-dd HH:mm:ss')}"></dd>
 
-        <div class="title">
-            <h3 th:text="${ageComDTO.ageComTitle}"></h3>
-            <dl>
-                <dd th:text="${ageComDTO.memberNick}"></dd>
-                <dd th:text="${#dates.format(ageComDTO.ageComDate, 'yyyy-MM-dd HH-mm-ss')}"></dd>
-
-                <dd th:text="${ageComDTO.ageComViews}"></dd>
-            </dl>
-            <br>
-            <hr class="line">
-            <a th:text="${ageComDTO.ageComDetail}"></a>
-        </div>
+            <dd th:text="${ageComDTO.ageComViews}"></dd>
+        </dl>
+        <br>
+        <hr class="line">
+        <a th:text="${ageComDTO.ageComDetail}"></a>
     </div>
+</div>
 <div class="but">
     <a th:href="@{AgeComUpdateForm(no=${ageComDTO.ageComNo})}">수정하기</a>
     <form action="/agecom/delete" method="post">

@@ -20,7 +20,7 @@
 
     </select>
 
-    <insert id="registAgeCom" parameterType="com.uni.mental.ageComunity.model.dto.AgeComDTO">
+    <insert id="registAgeCom" parameterType="com.uni.mental.ageComunity.model.dto.AgeComDTO" >
         INSERT INTO tbl_community_age (CATE_NO, MEMBER_NICK, AGECOM_TITLE, AGECOM_DETAIL, AGECOM_DATE, AGECOM_VIEWS)
         VALUES (#{cateNo}, #{memberNick}, #{ageComTitle}, #{ageComDetail}, NOW(), 0)
     </insert>
@@ -41,4 +41,17 @@
         DELETE FROM tbl_community_age
         WHERE AGECOM_NO = #{ageComNo}
     </delete>
+
+    <!-- 조회수 업데이트 쿼리 추가 -->
+    <update id="updateViewCount" parameterType="int">
+        UPDATE tbl_community_age
+        SET AGECOM_VIEWS = AGECOM_VIEWS + 1
+        WHERE AGECOM_NO = #{ageComNo}
+    </update>
+
+    <!-- 첨부파일 등록 -->
+<!--    <insert id="insertAttach" parameterType="com.uni.mental.ageComunity.model.dto.AgeComDTO">-->
+<!--        INSERT INTO tbl_attach (attach_newname)-->
+<!--        VALUES (#{attachNewname})-->
+<!--    </insert>-->
 </mapper>

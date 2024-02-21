@@ -11,15 +11,15 @@ public class AgeComServiceImpl implements AgeComService {
 
     private final AgeComDAO ageComDAO;
 
-
     public AgeComServiceImpl(AgeComDAO ageComDAO) {
         this.ageComDAO = ageComDAO;
     }
 
+    @Override
     public int registAgeCom(AgeComDTO ageCom) throws Exception {
         int result = ageComDAO.registAgeCom(ageCom);
 
-        if(result <=0){
+        if (result <= 0) {
             throw new Exception("게시물 등록 실패");
         }
         return result;
@@ -27,10 +27,8 @@ public class AgeComServiceImpl implements AgeComService {
 
     @Override
     public List<AgeComDTO> findAllView() {
-
         return ageComDAO.findAllView();
     }
-
 
     @Override
     public AgeComDTO selectOne(int no) {
@@ -38,10 +36,11 @@ public class AgeComServiceImpl implements AgeComService {
     }
 
     @Override
-    public int updateAgeCom(AgeComDTO ageCom) throws Exception {
-        int result = ageComDAO.registAgeCom(ageCom);
+    public int updateAgeCom(AgeComDTO ageComDTO) throws Exception {
+        // 수정 관련 메소드 호출로 변경
+        int result = ageComDAO.updateAgeCom(ageComDTO);
 
-        if(result <=0){
+        if (result <= 0) {
             throw new Exception("게시물 수정 실패");
         }
         return result;
@@ -51,6 +50,4 @@ public class AgeComServiceImpl implements AgeComService {
     public int deleteAgeCom(int no) {
         return ageComDAO.deleteAgeCom(no);
     }
-
-
 }
