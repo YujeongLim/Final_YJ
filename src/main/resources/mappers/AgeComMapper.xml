@@ -16,35 +16,35 @@
 
     <select id="findAllView" parameterType="com.uni.mental.ageComunity.model.dto.AgeComDTO">
         SELECT *
-        FROM tbl_community_age
+        FROM TBL_COMMUNITY_AGE
 
     </select>
 
     <insert id="registAgeCom" parameterType="com.uni.mental.ageComunity.model.dto.AgeComDTO" >
-        INSERT INTO tbl_community_age (CATE_NO, MEMBER_NICK, AGECOM_TITLE, AGECOM_DETAIL, AGECOM_DATE, AGECOM_VIEWS)
+        INSERT INTO TBL_COMMUNITY_AGE (CATE_NO, MEMBER_NICK, AGECOM_TITLE, AGECOM_DETAIL, AGECOM_DATE, AGECOM_VIEWS)
         VALUES (#{cateNo}, #{memberNick}, #{ageComTitle}, #{ageComDetail}, NOW(), 0)
     </insert>
 
     <select id="selectOne" parameterType="int" resultType="com.uni.mental.ageComunity.model.dto.AgeComDTO">
         SELECT *
-        FROM tbl_community_age
+        FROM TBL_COMMUNITY_AGE
         WHERE AGECOM_NO = #{ageComNo}
     </select>
 
     <update id="updateAgeCom" parameterType="com.uni.mental.ageComunity.model.dto.AgeComDTO">
-        UPDATE tbl_community_age
+        UPDATE TBL_COMMUNITY_AGE
         SET CATE_NO = #{cateNo}, MEMBER_NICK = #{memberNick}, AGECOM_TITLE = #{ageComTitle}, AGECOM_DETAIL = #{ageComDetail}, AGECOM_DATE = #{ageComDate}, AGECOM_VIEWS = #{ageComViews}
         WHERE AGECOM_NO = #{ageComNo}
     </update>
 
     <delete id="deleteAgeCom" parameterType="int">
-        DELETE FROM tbl_community_age
+        DELETE FROM TBL_COMMUNITY_AGE
         WHERE AGECOM_NO = #{ageComNo}
     </delete>
 
     <!-- 조회수 업데이트 쿼리 추가 -->
     <update id="updateViewCount" parameterType="int">
-        UPDATE tbl_community_age
+        UPDATE TBL_COMMUNITY_AGE
         SET AGECOM_VIEWS = AGECOM_VIEWS + 1
         WHERE AGECOM_NO = #{ageComNo}
     </update>
