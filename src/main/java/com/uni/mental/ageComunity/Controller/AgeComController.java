@@ -1,29 +1,24 @@
 package com.uni.mental.ageComunity.Controller;
 
+import com.uni.mental.ageComunity.model.service.AgeComService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import com.uni.mental.ageComunity.model.dao.AgeComDAO;
 import com.uni.mental.ageComunity.model.dto.AgeComDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
-import java.io.File;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.io.IOException;
 import java.util.UUID;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -33,20 +28,32 @@ public class AgeComController {
     //로그출력하기!!
     private static final Logger logger = LoggerFactory.getLogger(AgeComController.class);
     private final AgeComDAO ageComDAO;
+
     // 파일을 저장할 디렉토리 경로를 설정합니다.
     private final Path rootLocation = Paths.get("uploads");
+    private final AgeComService ageComService;
 
-    public AgeComController(AgeComDAO ageComDAO) {
+
+    @Autowired
+    public AgeComController(AgeComDAO ageComDAO, AgeComService ageComService) {
         this.ageComDAO = ageComDAO;
+        this.ageComService = ageComService;
     }
 
     @GetMapping("/AgeComList")
-    public void AgeComList(Model model) {
-        List<AgeComDTO> AgeComList = ageComDAO.findAllView();
-        //로그출력하기!!
-        logger.info("AgeComList: {}", AgeComList);
-//        model.addAttribute("AgeComList", AgeComList != null ? AgeComList : new ArrayList<>());
-      model.addAttribute("AgeComList", AgeComList);
+    public String ageComList(@RequestParam(value = "cateNo", required = false) Integer cateNo, Model model) {
+        List<AgeComDTO> ageComList;
+
+        if (cateNo != null) {
+            ageComList = ageComDAO.findByCateNo(cateNo);
+            String cateName2 = ageComDAO.findCateNameByCateNo(cateNo);
+            model.addAttribute("cateName2", cateName2);
+        } else {
+            ageComList = ageComDAO.findAllView();
+        }
+
+        model.addAttribute("ageComList", ageComList);
+        return "agecom/AgeComList";
     }
 
 
@@ -80,16 +87,47 @@ public class AgeComController {
         return mv;
     }
 
+//    @PostMapping("/regist")
+//    public String AgeComRegist(@ModelAttribute AgeComDTO ageComDTO){
+//        ageComDAO.registAgeCom(ageComDTO);
+//        return "redirect:/agecom/AgeComList";
+//    }
+
     @PostMapping("/regist")
-    public String AgeComRegist(@ModelAttribute AgeComDTO ageComDTO){
+    public String AgeComRegist(@ModelAttribute @Valid AgeComDTO ageComDTO, BindingResult result, @RequestParam(name = "file", required = false) MultipartFile file) throws Exception {
+        if (result.hasErrors()) {
+            logger.error("AgeCom 등록 중 유효성 검사에 실패했습니다: {}", result.getAllErrors());
+            return "redirect:/error";
+        }
+
+        if (file != null && !file.isEmpty()) {
+            String originalFilename = file.getOriginalFilename();
+            String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
+            String storedFileName = UUID.randomUUID().toString().replace("-", "") + extension;
+            Path destinationFile = rootLocation.resolve(Paths.get(storedFileName)).normalize().toAbsolutePath();
+
+            try {
+                file.transferTo(destinationFile.toFile());
+                ageComDTO.setAttachNewname(storedFileName); // 저장된 파일의 이름을 DTO에 설정
+            } catch (IOException e) {
+                throw new RuntimeException("파일 저장 실패: " + storedFileName, e);
+            }
+        }
+
         ageComDAO.registAgeCom(ageComDTO);
         return "redirect:/agecom/AgeComList";
     }
 
+
+
+
+
+
+
     @PostMapping("/update")
-    public String AgeComUpdate(@ModelAttribute AgeComDTO ageComDTO){
+    public String AgeComUpdate(@ModelAttribute @Valid AgeComDTO ageComDTO, BindingResult result, @RequestParam(name = "attachNewname", required = false) MultipartFile file) throws Exception {
+        // 게시글 업데이트 로직 실행
         ageComDAO.updateAgeCom(ageComDTO);
-        logger.info("ageComDTO:{}",ageComDTO);
         return "redirect:/agecom/AgeComList";
     }
 

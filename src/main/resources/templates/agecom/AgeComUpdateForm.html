@@ -140,9 +140,15 @@
 
             <input type="hidden" name="ageComViews" th:value="${ageComDTO.ageComViews}">
 
-<!--            <label>이미지 첨부 :-->
-<!--                <input type="file" name="file">-->
-<!--            </label>-->
+            <!-- 기존 이미지 보여주기 -->
+            <div th:if="${ageComDTO.attachNewname}">
+                <img th:src="@{'/uploads/' + ${ageComDTO.attachNewname}}" alt="Attached Image" style="max-width: 100%; height: auto;">
+            </div>
+
+            <label>이미지 첨부 (이미지를 변경하려면 새 이미지를 선택하세요):
+                <input type="file" name="attachNewname">
+            </label>
+
             <br>
             <button type="button" onclick="location.href='AgeComList'">취소하기</button>
             <button type="submit">수정하기</button>

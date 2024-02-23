@@ -16,8 +16,12 @@ public class AgeComServiceImpl implements AgeComService {
     }
 
     @Override
-    public int registAgeCom(AgeComDTO ageCom) throws Exception {
-        int result = ageComDAO.registAgeCom(ageCom);
+    public int registAgeCom(AgeComDTO ageComDTO) throws Exception {
+        int result = ageComDAO.registAgeCom(ageComDTO);
+
+        if (ageComDTO.getAttachNewname() != null && !ageComDTO.getAttachNewname().isEmpty()) {
+            ageComDAO.insertAttach(ageComDTO); // 첨부파일 정보 저장
+        }
 
         if (result <= 0) {
             throw new Exception("게시물 등록 실패");

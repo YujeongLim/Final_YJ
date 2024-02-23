@@ -1,6 +1,8 @@
 package com.uni.mental.ageComunity.model.service;
 
 import com.uni.mental.ageComunity.model.dto.AgeComDTO;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 public interface AgeComService {

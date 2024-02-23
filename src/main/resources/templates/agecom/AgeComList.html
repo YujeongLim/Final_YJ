@@ -33,28 +33,28 @@
     <div class="men">
         <ul>
             <li>
-                <a onclick="location.href='AgeComList'">
-                    <span class="mental"> 불면증 </span>
+                <a onclick="location.href='AgeComList?cateNo=13'">
+                    <span class="mental"> 10대 </span>
                 </a>
             </li>
             <li>
-                <a onclick="location.href='AgeComList'">
-                    <span class="mental"> ADHD </span>
+                <a onclick="location.href='AgeComList?cateNo=14'">
+                    <span class="mental"> 20대 </span>
                 </a>
             </li>
             <li>
-                <a onclick="location.href='AgeComList'">
-                    <span class="mental"> 조현병</span>
+                <a onclick="location.href='AgeComList?cateNo=15'">
+                    <span class="mental"> 30대 </span>
                 </a>
             </li>
             <li>
-                <a onclick="location.href='AgeComList'">
-                    <span class="mental"> 조울증 </span>
+                <a onclick="location.href='AgeComList?cateNo=16'">
+                    <span class="mental"> 40대 </span>
                 </a>
             </li>
             <li>
-                <a onclick="location.href='AgeComList'">
-                    <span class="mental"> 우울증 </span>
+                <a onclick="location.href='AgeComList?cateNo=17'">
+                    <span class="mental"> 50대 </span>
                 </a>
             </li>
         </ul>
@@ -70,7 +70,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="agecom : ${AgeComList}">
+        <tr th:each="agecom : ${ageComList}">
             <td th:text="${agecom.ageComNo}"></td>
             <td><a th:href="@{AgeComDetailView(no=${agecom.ageComNo})}" th:text="${agecom.ageComTitle}"></a></td>
             <td th:text="${agecom.memberNick}"></td>

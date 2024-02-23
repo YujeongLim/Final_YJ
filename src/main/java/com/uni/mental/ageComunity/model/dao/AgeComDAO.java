@@ -9,6 +9,8 @@ import java.util.List;
 public interface AgeComDAO {
 
     List<AgeComDTO> findAllView();
+    List<AgeComDTO> findByCateNo(int cateNo);
+    String findCateNameByCateNo(int cateNo);
     AgeComDTO selectOne(int no);
     int registAgeCom(AgeComDTO ageComDTO);
     int updateAgeCom(AgeComDTO ageComDTO);
@@ -16,4 +18,6 @@ public interface AgeComDAO {
     int deleteAgeCom(int no);
 
     void updateViewCount(int ageComNo);
+
+    void insertAttach(AgeComDTO ageComDTO);
 }

@@ -17,7 +17,6 @@
     <select id="findAllView" parameterType="com.uni.mental.ageComunity.model.dto.AgeComDTO">
         SELECT *
         FROM TBL_COMMUNITY_AGE
-
     </select>
 
     <insert id="registAgeCom" parameterType="com.uni.mental.ageComunity.model.dto.AgeComDTO" >
@@ -54,4 +53,27 @@
 <!--        INSERT INTO tbl_attach (attach_newname)-->
 <!--        VALUES (#{attachNewname})-->
 <!--    </insert>-->
+
+    <!-- cateNo 조인 쿼리 -->
+    <select id="findByCateNo" parameterType="Integer" resultType="com.uni.mental.ageComunity.model.dto.AgeComDTO">
+        SELECT a.*
+        FROM TBL_COMMUNITY_AGE a
+                 JOIN TBL_CATE c ON a.CATE_NO = c.CATE_NO
+        WHERE c.CATE_NO = #{cateNo}
+    </select>
+
+    <!-- 해당 카테고리 이름 가져오는 쿼리 -->
+    <select id="findCateNameByCateNo" parameterType="int" resultType="java.lang.String">
+        SELECT c.cate_name2
+        FROM tbl_cate c
+                 JOIN tbl_community_age a ON c.cate_no = a.cate_no
+        WHERE a.cate_no = #{cateNo}
+        LIMIT 1
+    </select>
+
+    <!-- 첨부파일 -->
+    <insert id="insertAttach" parameterType="com.uni.mental.ageComunity.model.dto.AgeComDTO">
+        INSERT INTO tbl_attach (attach_newname)
+        VALUES (#{attachNewname})  <!-- 파일의 경로 또는 이름을 삽입 -->
+    </insert>
 </mapper>

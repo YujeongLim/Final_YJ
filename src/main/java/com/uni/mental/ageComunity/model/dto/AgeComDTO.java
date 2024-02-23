@@ -6,17 +6,18 @@ import java.util.Date;
 
 public class AgeComDTO {
     private Integer ageComNo;
-    private int cateNo;
+    private Integer cateNo;
     private String ageComTitle;
     private String ageComDetail;
     private String memberNick;
-
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")  // Specify the date format
     private Date ageComDate;
     private Integer ageComViews = 0; // 기본값으로 0 설정
 
+    private String attachNewname;
 
-    public AgeComDTO(Integer ageComNo, int cateNo, String ageComTitle, String ageComDetail, String memberNick, Date ageComDate, Integer ageComViews) {
+
+    public AgeComDTO(Integer ageComNo, int cateNo, String ageComTitle, String ageComDetail, String memberNick, Date ageComDate, Integer ageComViews, String attachNewname) {
         this.ageComNo = ageComNo;
         this.cateNo = cateNo;
         this.ageComTitle = ageComTitle;
@@ -24,6 +25,8 @@ public class AgeComDTO {
         this.memberNick = memberNick;
         this.ageComDate = ageComDate;
         this.ageComViews = ageComViews;
+        this.attachNewname = attachNewname;
+
     }
 
     public Integer getAgeComNo() {
@@ -82,6 +85,13 @@ public class AgeComDTO {
         this.ageComViews = ageComViews;
     }
 
+    public String getAttachNewname() {
+        return attachNewname;
+    }
+    public void setAttachNewname(String attachNewname) {
+        this.attachNewname = attachNewname;
+    }
+
     @Override
     public String toString() {
         return "AgeComDTO{" +
@@ -92,6 +102,8 @@ public class AgeComDTO {
                 ", memberNick='" + memberNick + '\'' +
                 ", ageComDate=" + ageComDate +
                 ", ageComViews=" + ageComViews +
+                ", attachNewname=" + attachNewname +
                 '}';
     }
+
 }
