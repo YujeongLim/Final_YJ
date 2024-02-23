@@ -1,5 +1,6 @@
 package com.uni.mental.ageComunity.model.dto;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 
@@ -102,7 +103,6 @@ public class AgeComDTO {
                 ", memberNick='" + memberNick + '\'' +
                 ", ageComDate=" + ageComDate +
                 ", ageComViews=" + ageComViews +
-                ", attachNewname=" + attachNewname +
                 '}';
     }
 

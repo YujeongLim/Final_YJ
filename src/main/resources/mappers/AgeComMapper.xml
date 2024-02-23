@@ -71,9 +71,21 @@
         LIMIT 1
     </select>
 
-    <!-- 첨부파일 -->
+    <!-- 글 생성 첨부파일 -->
+<!--    <insert id="insertAttach" parameterType="com.uni.mental.ageComunity.model.dto.AgeComDTO">-->
+<!--        INSERT INTO tbl_attach (attach_newname)-->
+<!--        VALUES (#{attachNewname})-->
+<!--    </insert>-->
+    <!-- 게시글 생성 시 첨부파일 이름도 함께 저장 -->
     <insert id="insertAttach" parameterType="com.uni.mental.ageComunity.model.dto.AgeComDTO">
-        INSERT INTO tbl_attach (attach_newname)
-        VALUES (#{attachNewname})  <!-- 파일의 경로 또는 이름을 삽입 -->
+        INSERT INTO tbl_community_age (ageComTitle, ageComDetail, memberNick, cateNo, attach_newname)
+        VALUES (#{ageComTitle}, #{ageComDetail}, #{memberNick}, #{cateNo}, #{attachNewname})
     </insert>
+
+    <!-- 게시글 생성 또는 업데이트 시 첨부파일 이름도 함께 저장 -->
+<!--    <update id="updateAgeComWithAttach" parameterType="com.uni.mental.ageComunity.model.dto.AgeComDTO">-->
+<!--        UPDATE tbl_community_age-->
+<!--        SET attach_newname = #{attachNewname}-->
+<!--        WHERE ageComNo = #{ageComNo}-->
+<!--    </update>-->
 </mapper>

@@ -30,7 +30,7 @@ public class AgeComController {
     private final AgeComDAO ageComDAO;
 
     // 파일을 저장할 디렉토리 경로를 설정합니다.
-    private final Path rootLocation = Paths.get("uploads");
+    private final Path rootLocation = Paths.get("src/main/resources/static/attach");
     private final AgeComService ageComService;
 
 
@@ -87,20 +87,14 @@ public class AgeComController {
         return mv;
     }
 
-//    @PostMapping("/regist")
-//    public String AgeComRegist(@ModelAttribute AgeComDTO ageComDTO){
-//        ageComDAO.registAgeCom(ageComDTO);
-//        return "redirect:/agecom/AgeComList";
-//    }
-
     @PostMapping("/regist")
-    public String AgeComRegist(@ModelAttribute @Valid AgeComDTO ageComDTO, BindingResult result, @RequestParam(name = "file", required = false) MultipartFile file) throws Exception {
+    public String AgeComRegist(@ModelAttribute @Valid AgeComDTO ageComDTO, BindingResult result, @RequestParam("file") MultipartFile file) throws Exception {
         if (result.hasErrors()) {
             logger.error("AgeCom 등록 중 유효성 검사에 실패했습니다: {}", result.getAllErrors());
             return "redirect:/error";
         }
 
-        if (file != null && !file.isEmpty()) {
+        if (!file.isEmpty()) {
             String originalFilename = file.getOriginalFilename();
             String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
             String storedFileName = UUID.randomUUID().toString().replace("-", "") + extension;
@@ -108,7 +102,7 @@ public class AgeComController {
 
             try {
                 file.transferTo(destinationFile.toFile());
-                ageComDTO.setAttachNewname(storedFileName); // 저장된 파일의 이름을 DTO에 설정
+                ageComDTO.setAttachNewname(storedFileName); // 저장된 파일 이름을 DTO에 설정
             } catch (IOException e) {
                 throw new RuntimeException("파일 저장 실패: " + storedFileName, e);
             }
@@ -117,9 +111,6 @@ public class AgeComController {
         ageComDAO.registAgeCom(ageComDTO);
         return "redirect:/agecom/AgeComList";
     }
-
-
-
 
 
 
