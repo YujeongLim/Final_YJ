@@ -7,13 +7,13 @@ import java.util.List;
 
 @Mapper
 public interface CheckupMapper {
-    @Select("SELECT mental_name FROM tbl_mental_list")
+    @Select("SELECT MENTAL_NAME FROM TBL_MENTAL_LIST")
     List<String> selectAllMentalNames();
 
-    @Select("SELECT cu_question FROM tbl_checkup WHERE mental_name = #{mentalName}")
+    @Select("SELECT CU_QUESTION FROM TBL_CHECKUP WHERE MENTAL_NAME = #{mentalName}")
     List<String> selectQuestionsByMentalName(String mentalName);
 
-    @Select("SELECT mental_name FROM tbl_mental_list WHERE mental_no = #{idx}")
+    @Select("SELECT MENTAL_NAME FROM TBL_MENTAL_LIST WHERE MENTAL_NO = #{idx}")
     String selectMentalNameByIdx(int idx);
 
 }

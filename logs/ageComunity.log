@@ -1,3 +1,344 @@
 [2m2024-02-26 00:01:36.865[0;39m [32m INFO[0;39m [35m16648[0;39m [2m---[0;39m [2m[   File Watcher][0;39m [36mrtingClassPathChangeChangedEventListener[0;39m [2m 211[0;39m [2m:[0;39m Restarting due to 79 class path changes (0 additions, 0 deletions, 79 modifications)
 [2m2024-02-26 00:01:37.024[0;39m [32m INFO[0;39m [35m16648[0;39m [2m---[0;39m [2m[       Thread-5][0;39m [36mo.a.coyote.http11.Http11NioProtocol     [0;39m [2m 173[0;39m [2m:[0;39m Stopping ProtocolHandler ["http-nio-8888"]
 [2m2024-02-26 00:01:37.214[0;39m [32m INFO[0;39m [35m16648[0;39m [2m---[0;39m [2m[       Thread-5][0;39m [36mj.LocalContainerEntityManagerFactoryBean[0;39m [2m 650[0;39m [2m:[0;39m Closing JPA EntityManagerFactory for persistence unit 'default'
+[2m2024-02-26 00:46:45.090[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36m.e.DevToolsPropertyDefaultsPostProcessor[0;39m [2m 252[0;39m [2m:[0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[2m2024-02-26 00:46:45.094[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36m.e.DevToolsPropertyDefaultsPostProcessor[0;39m [2m 252[0;39m [2m:[0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[2m2024-02-26 00:46:46.492[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36m.s.d.r.c.RepositoryConfigurationDelegate[0;39m [2m 139[0;39m [2m:[0;39m Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2m2024-02-26 00:46:46.516[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36m.s.d.r.c.RepositoryConfigurationDelegate[0;39m [2m 208[0;39m [2m:[0;39m Finished Spring Data repository scanning in 14 ms. Found 0 JPA repository interfaces.
+[2m2024-02-26 00:46:47.524[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.b.w.embedded.tomcat.TomcatWebServer [0;39m [2m 109[0;39m [2m:[0;39m Tomcat initialized with port 8888 (http)
+[2m2024-02-26 00:46:47.538[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.a.coyote.http11.Http11NioProtocol     [0;39m [2m 173[0;39m [2m:[0;39m Initializing ProtocolHandler ["http-nio-8888"]
+[2m2024-02-26 00:46:47.541[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.apache.catalina.core.StandardService  [0;39m [2m 173[0;39m [2m:[0;39m Starting service [Tomcat]
+[2m2024-02-26 00:46:47.542[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.apache.catalina.core.StandardEngine   [0;39m [2m 173[0;39m [2m:[0;39m Starting Servlet engine: [Apache Tomcat/10.1.18]
+[2m2024-02-26 00:46:47.645[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.a.c.c.C.[Tomcat].[localhost].[/]      [0;39m [2m 173[0;39m [2m:[0;39m Initializing Spring embedded WebApplicationContext
+[2m2024-02-26 00:46:47.646[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mw.s.c.ServletWebServerApplicationContext[0;39m [2m 296[0;39m [2m:[0;39m Root WebApplicationContext: initialization completed in 2550 ms
+[2m2024-02-26 00:46:49.653[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.o.j.p.SpringPersistenceUnitInfo     [0;39m [2m  87[0;39m [2m:[0;39m No LoadTimeWeaver setup: ignoring JPA class transformer
+[2m2024-02-26 00:46:50.450[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mj.LocalContainerEntityManagerFactoryBean[0;39m [2m 437[0;39m [2m:[0;39m Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2m2024-02-26 00:46:51.012[0;39m [33m WARN[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mJpaBaseConfiguration$JpaWebConfiguration[0;39m [2m 232[0;39m [2m:[0;39m spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2m2024-02-26 00:46:51.389[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.s.web.DefaultSecurityFilterChain    [0;39m [2m  54[0;39m [2m:[0;39m Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3840d997, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5eececac, org.springframework.security.web.context.SecurityContextHolderFilter@176635bd, org.springframework.security.web.header.HeaderWriterFilter@8a0e6a2, org.springframework.web.filter.CorsFilter@5336e16e, org.springframework.security.web.authentication.logout.LogoutFilter@6fa780fc, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6810b0fc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4942fcfe, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@29b115ef, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@562d9160, org.springframework.security.web.access.ExceptionTranslationFilter@6c7c46bd, org.springframework.security.web.access.intercept.AuthorizationFilter@460aff06]
+[2m2024-02-26 00:46:51.397[0;39m [33m WARN[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.s.c.a.web.builders.WebSecurity      [0;39m [2m 292[0;39m [2m:[0;39m You are asking Spring Security to ignore Mvc [pattern='/css/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[2m2024-02-26 00:46:51.398[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.s.web.DefaultSecurityFilterChain    [0;39m [2m  51[0;39m [2m:[0;39m Will not secure Mvc [pattern='/css/**']
+[2m2024-02-26 00:46:51.398[0;39m [33m WARN[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.s.c.a.web.builders.WebSecurity      [0;39m [2m 292[0;39m [2m:[0;39m You are asking Spring Security to ignore Mvc [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[2m2024-02-26 00:46:51.398[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.s.web.DefaultSecurityFilterChain    [0;39m [2m  51[0;39m [2m:[0;39m Will not secure Mvc [pattern='/js/**']
+[2m2024-02-26 00:46:51.399[0;39m [33m WARN[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.s.c.a.web.builders.WebSecurity      [0;39m [2m 292[0;39m [2m:[0;39m You are asking Spring Security to ignore Mvc [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[2m2024-02-26 00:46:51.399[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.s.web.DefaultSecurityFilterChain    [0;39m [2m  51[0;39m [2m:[0;39m Will not secure Mvc [pattern='/images/**']
+[2m2024-02-26 00:46:51.879[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.b.d.a.OptionalLiveReloadServer      [0;39m [2m  59[0;39m [2m:[0;39m LiveReload server is running on port 35729
+[2m2024-02-26 00:46:51.908[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.a.coyote.http11.Http11NioProtocol     [0;39m [2m 173[0;39m [2m:[0;39m Starting ProtocolHandler ["http-nio-8888"]
+[2m2024-02-26 00:46:51.936[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.b.w.embedded.tomcat.TomcatWebServer [0;39m [2m 241[0;39m [2m:[0;39m Tomcat started on port 8888 (http) with context path ''
+[2m2024-02-26 00:46:53.007[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-2][0;39m [36mo.a.c.c.C.[Tomcat].[localhost].[/]      [0;39m [2m 173[0;39m [2m:[0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2m2024-02-26 00:46:53.008[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-2][0;39m [36mo.s.web.servlet.DispatcherServlet       [0;39m [2m 532[0;39m [2m:[0;39m Initializing Servlet 'dispatcherServlet'
+[2m2024-02-26 00:46:53.009[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-2][0;39m [36mo.s.web.servlet.DispatcherServlet       [0;39m [2m 554[0;39m [2m:[0;39m Completed initialization in 1 ms
+[2m2024-02-26 00:46:55.370[0;39m [32mDEBUG[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-9][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 135[0;39m [2m:[0;39m ==>  Preparing: SELECT * FROM TBL_COMMUNITY_AGE ORDER BY AGECOM_NO DESC LIMIT ? OFFSET ?
+[2m2024-02-26 00:46:55.392[0;39m [32mDEBUG[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-9][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 135[0;39m [2m:[0;39m ==> Parameters: 10(Integer), 0(Integer)
+[2m2024-02-26 00:46:55.408[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-9][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==    Columns: AGECOM_NO, CATE_NO, AGECOM_TITLE, AGECOM_DETAIL, MEMBER_NICK, AGECOM_DATE, AGECOM_VIEWS, attach_newname
+[2m2024-02-26 00:46:55.409[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-9][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 22, 13, test, test, user02, 2024-02-23 23:21:38, 21, a43da2c85d4e433bbc559b887e89b82c.jpg
+[2m2024-02-26 00:46:55.412[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-9][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 19, 13, ㅅㄷㄴㅅ, ㅅㄷㄴ, user02, 2024-02-23 21:02:20, 10, 48f28476d54c4cec97718265612213f1.jpeg
+[2m2024-02-26 00:46:55.412[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-9][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 18, 13, test, test, user02, 2024-02-23 20:53:31, 0, null
+[2m2024-02-26 00:46:55.413[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-9][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 17, 13, 1234, 1234, user02, 2024-02-23 20:47:18, 3, null
+[2m2024-02-26 00:46:55.414[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-9][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 15, 13, 123, 123, user02, 2024-02-22 17:46:57, 3, null
+[2m2024-02-26 00:46:55.414[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-9][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 7, 17, title5, detail5, member5, 2024-02-16 07:34:44, 0, null
+[2m2024-02-26 00:46:55.415[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-9][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 6, 16, title4, detail4, member4, 2024-02-16 07:34:44, 0, null
+[2m2024-02-26 00:46:55.415[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-9][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 5, 15, title3, detail3, member3, 2024-02-16 07:34:44, 0, null
+[2m2024-02-26 00:46:55.416[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-9][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 4, 14, title2, detail2, member2, 2024-02-16 07:34:44, 1, null
+[2m2024-02-26 00:46:55.416[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-9][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 3, 13, title1, detail1, member1, 2024-02-16 07:34:44, 7, null
+[2m2024-02-26 00:46:55.416[0;39m [32mDEBUG[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-9][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 135[0;39m [2m:[0;39m <==      Total: 10
+[2m2024-02-26 00:46:55.418[0;39m [32mDEBUG[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-9][0;39m [36mc.u.m.a.model.dao.AgeComDAO.countAll    [0;39m [2m 135[0;39m [2m:[0;39m ==>  Preparing: SELECT COUNT(*) FROM TBL_COMMUNITY_AGE
+[2m2024-02-26 00:46:55.418[0;39m [32mDEBUG[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-9][0;39m [36mc.u.m.a.model.dao.AgeComDAO.countAll    [0;39m [2m 135[0;39m [2m:[0;39m ==> Parameters: 
+[2m2024-02-26 00:46:55.424[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-9][0;39m [36mc.u.m.a.model.dao.AgeComDAO.countAll    [0;39m [2m 141[0;39m [2m:[0;39m <==    Columns: COUNT(*)
+[2m2024-02-26 00:46:55.424[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-9][0;39m [36mc.u.m.a.model.dao.AgeComDAO.countAll    [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 10
+[2m2024-02-26 00:46:55.426[0;39m [32mDEBUG[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-9][0;39m [36mc.u.m.a.model.dao.AgeComDAO.countAll    [0;39m [2m 135[0;39m [2m:[0;39m <==      Total: 1
+[2m2024-02-26 00:46:57.251[0;39m [31mERROR[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-4][0;39m [36mo.a.c.c.C.[.[.[/].[dispatcherServlet]   [0;39m [2m 175[0;39m [2m:[0;39m Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'mental.tbl_mental_list' doesn't exist
+### The error may exist in com/uni/mental/mapper/CheckupMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT mental_name FROM tbl_mental_list
+### Cause: java.sql.SQLSyntaxErrorException: Table 'mental.tbl_mental_list' doesn't exist
+; bad SQL grammar []] with root cause
+
+java.sql.SQLSyntaxErrorException: Table 'mental.tbl_mental_list' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:371)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:65)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:80)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:65)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:336)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:158)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:110)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:90)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425)
+	at jdk.proxy2/jdk.proxy2.$Proxy93.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224)
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:147)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:80)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+	at jdk.proxy4/jdk.proxy4.$Proxy101.selectAllMentalNames(Unknown Source)
+	at com.uni.mental.checkup.model.service.CheckupService.getAllMentalNames(CheckupService.java:16)
+	at com.uni.mental.checkup.controller.CheckupController.checkup(CheckupController.java:28)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:261)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:189)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:225)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+[2m2024-02-26 00:47:01.526[0;39m [32mDEBUG[0;39m [35m24248[0;39m [2m---[0;39m [2m[io-8888-exec-10][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 135[0;39m [2m:[0;39m ==>  Preparing: SELECT * FROM TBL_COMMUNITY_AGE ORDER BY AGECOM_NO DESC LIMIT ? OFFSET ?
+[2m2024-02-26 00:47:01.527[0;39m [32mDEBUG[0;39m [35m24248[0;39m [2m---[0;39m [2m[io-8888-exec-10][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 135[0;39m [2m:[0;39m ==> Parameters: 10(Integer), 0(Integer)
+[2m2024-02-26 00:47:01.535[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[io-8888-exec-10][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==    Columns: AGECOM_NO, CATE_NO, AGECOM_TITLE, AGECOM_DETAIL, MEMBER_NICK, AGECOM_DATE, AGECOM_VIEWS, attach_newname
+[2m2024-02-26 00:47:01.536[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[io-8888-exec-10][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 22, 13, test, test, user02, 2024-02-23 23:21:38, 21, a43da2c85d4e433bbc559b887e89b82c.jpg
+[2m2024-02-26 00:47:01.537[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[io-8888-exec-10][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 19, 13, ㅅㄷㄴㅅ, ㅅㄷㄴ, user02, 2024-02-23 21:02:20, 10, 48f28476d54c4cec97718265612213f1.jpeg
+[2m2024-02-26 00:47:01.538[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[io-8888-exec-10][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 18, 13, test, test, user02, 2024-02-23 20:53:31, 0, null
+[2m2024-02-26 00:47:01.538[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[io-8888-exec-10][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 17, 13, 1234, 1234, user02, 2024-02-23 20:47:18, 3, null
+[2m2024-02-26 00:47:01.539[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[io-8888-exec-10][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 15, 13, 123, 123, user02, 2024-02-22 17:46:57, 3, null
+[2m2024-02-26 00:47:01.540[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[io-8888-exec-10][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 7, 17, title5, detail5, member5, 2024-02-16 07:34:44, 0, null
+[2m2024-02-26 00:47:01.541[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[io-8888-exec-10][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 6, 16, title4, detail4, member4, 2024-02-16 07:34:44, 0, null
+[2m2024-02-26 00:47:01.543[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[io-8888-exec-10][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 5, 15, title3, detail3, member3, 2024-02-16 07:34:44, 0, null
+[2m2024-02-26 00:47:01.543[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[io-8888-exec-10][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 4, 14, title2, detail2, member2, 2024-02-16 07:34:44, 1, null
+[2m2024-02-26 00:47:01.544[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[io-8888-exec-10][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 3, 13, title1, detail1, member1, 2024-02-16 07:34:44, 7, null
+[2m2024-02-26 00:47:01.544[0;39m [32mDEBUG[0;39m [35m24248[0;39m [2m---[0;39m [2m[io-8888-exec-10][0;39m [36mc.u.m.a.m.d.AgeComDAO.findAllViewByPage [0;39m [2m 135[0;39m [2m:[0;39m <==      Total: 10
+[2m2024-02-26 00:47:01.544[0;39m [32mDEBUG[0;39m [35m24248[0;39m [2m---[0;39m [2m[io-8888-exec-10][0;39m [36mc.u.m.a.model.dao.AgeComDAO.countAll    [0;39m [2m 135[0;39m [2m:[0;39m ==>  Preparing: SELECT COUNT(*) FROM TBL_COMMUNITY_AGE
+[2m2024-02-26 00:47:01.545[0;39m [32mDEBUG[0;39m [35m24248[0;39m [2m---[0;39m [2m[io-8888-exec-10][0;39m [36mc.u.m.a.model.dao.AgeComDAO.countAll    [0;39m [2m 135[0;39m [2m:[0;39m ==> Parameters: 
+[2m2024-02-26 00:47:01.551[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[io-8888-exec-10][0;39m [36mc.u.m.a.model.dao.AgeComDAO.countAll    [0;39m [2m 141[0;39m [2m:[0;39m <==    Columns: COUNT(*)
+[2m2024-02-26 00:47:01.551[0;39m [32mTRACE[0;39m [35m24248[0;39m [2m---[0;39m [2m[io-8888-exec-10][0;39m [36mc.u.m.a.model.dao.AgeComDAO.countAll    [0;39m [2m 141[0;39m [2m:[0;39m <==        Row: 10
+[2m2024-02-26 00:47:01.551[0;39m [32mDEBUG[0;39m [35m24248[0;39m [2m---[0;39m [2m[io-8888-exec-10][0;39m [36mc.u.m.a.model.dao.AgeComDAO.countAll    [0;39m [2m 135[0;39m [2m:[0;39m <==      Total: 1
+[2m2024-02-26 00:47:43.856[0;39m [31mERROR[0;39m [35m24248[0;39m [2m---[0;39m [2m[nio-8888-exec-5][0;39m [36mo.a.c.c.C.[.[.[/].[dispatcherServlet]   [0;39m [2m 175[0;39m [2m:[0;39m Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'mental.tbl_mental_list' doesn't exist
+### The error may exist in com/uni/mental/mapper/CheckupMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT mental_name FROM tbl_mental_list
+### Cause: java.sql.SQLSyntaxErrorException: Table 'mental.tbl_mental_list' doesn't exist
+; bad SQL grammar []] with root cause
+
+java.sql.SQLSyntaxErrorException: Table 'mental.tbl_mental_list' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:371)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:65)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:80)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:65)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:336)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:158)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:110)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:90)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425)
+	at jdk.proxy2/jdk.proxy2.$Proxy93.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224)
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:147)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:80)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+	at jdk.proxy4/jdk.proxy4.$Proxy101.selectAllMentalNames(Unknown Source)
+	at com.uni.mental.checkup.model.service.CheckupService.getAllMentalNames(CheckupService.java:16)
+	at com.uni.mental.checkup.controller.CheckupController.checkup(CheckupController.java:28)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:261)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:189)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:225)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+[2m2024-02-26 00:49:14.497[0;39m [32m INFO[0;39m [35m24248[0;39m [2m---[0;39m [2m[ionShutdownHook][0;39m [36mj.LocalContainerEntityManagerFactoryBean[0;39m [2m 650[0;39m [2m:[0;39m Closing JPA EntityManagerFactory for persistence unit 'default'
