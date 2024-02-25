@@ -116,7 +116,7 @@
         <a th:text="${ageComDTO.ageComDetail}"></a>
     </div>
     <div th:if="${ageComDTO.attachNewname}">
-        <img th:src="@{'/src/main/resources/static/attach/' + ${ageComDTO.attachNewname}}" alt="Attached Image" style="max-width: 100%; height: auto;">
+        <img th:src="@{'/attach/' + ${ageComDTO.attachNewname}}" alt="Attached Image" style="max-width: 100%; height: auto;">
     </div>
 </div>
 <div class="but">
@@ -135,6 +135,18 @@
         <textarea cols="50" rows="5" placeholder="댓글을 입력해주세요"></textarea>
     </label>
     <input class="btn" type="submit" value="등록">
+    <!-- 댓글 수정 폼 예시 -->
+    <form action="/agecom/updateComment" method="post">
+        <input type="hidden" name="ageCmtNo" value="댓글 고유 번호">
+        <textarea name="ageCmtDetail">기존 댓글 내용</textarea>
+        <button type="submit">수정</button>
+    </form>
+    <!-- 댓글 삭제 버튼 예시 -->
+    <form action="/agecom/deleteComment" method="post">
+        <input type="hidden" name="ageCmtNo" value="댓글 고유 번호">
+        <input type="hidden" name="ageComNo" value="게시글 고유 번호">
+        <button type="submit">삭제</button>
+    </form>
 </div>
 <div th:replace="common/footer :: footer"></div>
 <script>

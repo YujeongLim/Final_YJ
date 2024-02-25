@@ -4,7 +4,8 @@ import com.uni.mental.ageComunity.model.service.AgeComService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import com.uni.mental.ageComunity.model.dao.AgeComDAO;
 import com.uni.mental.ageComunity.model.dto.AgeComDTO;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.awt.print.Pageable;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.io.IOException;
@@ -41,18 +44,29 @@ public class AgeComController {
     }
 
     @GetMapping("/AgeComList")
-    public String ageComList(@RequestParam(value = "cateNo", required = false) Integer cateNo, Model model) {
+    public String ageComList(@RequestParam(value = "cateNo", required = false) Integer cateNo,
+                             @RequestParam(value = "page", defaultValue = "0") int page,
+                             @RequestParam(value = "size", defaultValue = "10") int size,
+                             Model model) {
         List<AgeComDTO> ageComList;
+        int totalCount;
 
         if (cateNo != null) {
-            ageComList = ageComDAO.findByCateNo(cateNo);
-            String cateName2 = ageComDAO.findCateNameByCateNo(cateNo);
-            model.addAttribute("cateName2", cateName2);
+            ageComList = ageComService.findAllViewByPage(cateNo, page, size);
+            totalCount = ageComService.getTotalCountByCateNo(cateNo);
         } else {
-            ageComList = ageComDAO.findAllView();
+            ageComList = ageComService.findAllViewByPage(null, page, size); // 서비스 계층에서 모든 게시글 조회하는 메서드 필요
+            totalCount = ageComService.getTotalCount(); // 서비스 계층에서 모든 게시글의 총 개수를 조회하는 메서드 필요
         }
+        // 모델에 cateNo 추가해서 선택한 카테고리의 span태그에 background 컬러 넣음
+        model.addAttribute("cateNo", cateNo);
+        
+        int totalPages = (int) Math.ceil((double) totalCount / size);
 
         model.addAttribute("ageComList", ageComList);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", totalPages);
+
         return "agecom/AgeComList";
     }
 
@@ -116,9 +130,13 @@ public class AgeComController {
 
 
     @PostMapping("/update")
-    public String AgeComUpdate(@ModelAttribute @Valid AgeComDTO ageComDTO, BindingResult result, @RequestParam(name = "attachNewname", required = false) MultipartFile file) throws Exception {
-        // 게시글 업데이트 로직 실행
-        ageComDAO.updateAgeCom(ageComDTO);
+    public String AgeComUpdate(@ModelAttribute @Valid AgeComDTO ageComDTO, BindingResult result, @RequestParam(name = "file", required = false) MultipartFile file) throws Exception {
+        if (result.hasErrors()) {
+            logger.error("게시글 수정 중 유효성 검사 실패: {}", result.getAllErrors());
+            return "redirect:/error";
+        }
+
+        ageComService.updateAgeCom(ageComDTO, file); // 첨부파일 포함하여 업데이트
         return "redirect:/agecom/AgeComList";
     }
 

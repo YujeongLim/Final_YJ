@@ -12,6 +12,7 @@
         <result column="MEMBER_NICK" property="memberNick"/>
         <result column="AGECOM_DATE" property="ageComDate"/>
         <result column="AGECOM_VIEWS" property="ageComViews"/>
+        <result column="ATTACH_NEWNAME" property="attachNewname"/>
     </resultMap>
 
     <select id="findAllView" parameterType="com.uni.mental.ageComunity.model.dto.AgeComDTO">
@@ -20,8 +21,8 @@
     </select>
 
     <insert id="registAgeCom" parameterType="com.uni.mental.ageComunity.model.dto.AgeComDTO" >
-        INSERT INTO TBL_COMMUNITY_AGE (CATE_NO, MEMBER_NICK, AGECOM_TITLE, AGECOM_DETAIL, AGECOM_DATE, AGECOM_VIEWS)
-        VALUES (#{cateNo}, #{memberNick}, #{ageComTitle}, #{ageComDetail}, NOW(), 0)
+        INSERT INTO TBL_COMMUNITY_AGE (CATE_NO, MEMBER_NICK, AGECOM_TITLE, AGECOM_DETAIL, AGECOM_DATE, AGECOM_VIEWS, ATTACH_NEWNAME)
+        VALUES (#{cateNo}, #{memberNick}, #{ageComTitle}, #{ageComDetail}, NOW(), 0, #{attachNewname})
     </insert>
 
     <select id="selectOne" parameterType="int" resultType="com.uni.mental.ageComunity.model.dto.AgeComDTO">
@@ -32,7 +33,7 @@
 
     <update id="updateAgeCom" parameterType="com.uni.mental.ageComunity.model.dto.AgeComDTO">
         UPDATE TBL_COMMUNITY_AGE
-        SET CATE_NO = #{cateNo}, MEMBER_NICK = #{memberNick}, AGECOM_TITLE = #{ageComTitle}, AGECOM_DETAIL = #{ageComDetail}, AGECOM_DATE = #{ageComDate}, AGECOM_VIEWS = #{ageComViews}
+        SET CATE_NO = #{cateNo}, MEMBER_NICK = #{memberNick}, AGECOM_TITLE = #{ageComTitle}, AGECOM_DETAIL = #{ageComDetail}, AGECOM_DATE = #{ageComDate}, AGECOM_VIEWS = #{ageComViews}, ATTACH_NEWNAME = #{attachNewname}
         WHERE AGECOM_NO = #{ageComNo}
     </update>
 
@@ -48,12 +49,6 @@
         WHERE AGECOM_NO = #{ageComNo}
     </update>
 
-    <!-- 첨부파일 등록 -->
-<!--    <insert id="insertAttach" parameterType="com.uni.mental.ageComunity.model.dto.AgeComDTO">-->
-<!--        INSERT INTO tbl_attach (attach_newname)-->
-<!--        VALUES (#{attachNewname})-->
-<!--    </insert>-->
-
     <!-- cateNo 조인 쿼리 -->
     <select id="findByCateNo" parameterType="Integer" resultType="com.uni.mental.ageComunity.model.dto.AgeComDTO">
         SELECT a.*
@@ -64,28 +59,51 @@
 
     <!-- 해당 카테고리 이름 가져오는 쿼리 -->
     <select id="findCateNameByCateNo" parameterType="int" resultType="java.lang.String">
-        SELECT c.cate_name2
-        FROM tbl_cate c
-                 JOIN tbl_community_age a ON c.cate_no = a.cate_no
-        WHERE a.cate_no = #{cateNo}
+        SELECT c.CATE_NAME2
+        FROM TBL_CATE c
+                 JOIN TBL_COMMUNITY_AGE a ON c.CATE_NO = a.CATE_NO
+        WHERE a.CATE_NO = #{cateNo}
         LIMIT 1
     </select>
 
-    <!-- 글 생성 첨부파일 -->
-<!--    <insert id="insertAttach" parameterType="com.uni.mental.ageComunity.model.dto.AgeComDTO">-->
-<!--        INSERT INTO tbl_attach (attach_newname)-->
-<!--        VALUES (#{attachNewname})-->
-<!--    </insert>-->
     <!-- 게시글 생성 시 첨부파일 이름도 함께 저장 -->
     <insert id="insertAttach" parameterType="com.uni.mental.ageComunity.model.dto.AgeComDTO">
-        INSERT INTO tbl_community_age (ageComTitle, ageComDetail, memberNick, cateNo, attach_newname)
+        INSERT INTO TBL_COMMUNITY_AGE (AGECOMTITLE, AGECOMDETAIL, MEMBERNICK, CATENO, ATTACH_NEWNAME)
         VALUES (#{ageComTitle}, #{ageComDetail}, #{memberNick}, #{cateNo}, #{attachNewname})
     </insert>
 
     <!-- 게시글 생성 또는 업데이트 시 첨부파일 이름도 함께 저장 -->
-<!--    <update id="updateAgeComWithAttach" parameterType="com.uni.mental.ageComunity.model.dto.AgeComDTO">-->
-<!--        UPDATE tbl_community_age-->
-<!--        SET attach_newname = #{attachNewname}-->
-<!--        WHERE ageComNo = #{ageComNo}-->
-<!--    </update>-->
+    <update id="updateAgeComWithAttach" parameterType="com.uni.mental.ageComunity.model.dto.AgeComDTO">
+        UPDATE TBL_COMMUNITY_AGE
+        SET ATTACH_NEWNAME = #{attachNewname}
+        WHERE AGECOMNO = #{ageComNo}
+    </update>
+
+    <!-- 페이징 처리를 위한 쿼리 -->
+    <select id="findAllViewByPage" resultType="com.uni.mental.ageComunity.model.dto.AgeComDTO">
+        <choose>
+            <when test="cateNo != null">
+                SELECT * FROM TBL_COMMUNITY_AGE
+                WHERE CATE_NO = #{cateNo}
+            </when>
+            <otherwise>
+                SELECT * FROM TBL_COMMUNITY_AGE
+            </otherwise>
+        </choose>
+        ORDER BY AGECOM_NO DESC
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <!-- 전체 게시글 수를 조회하는 쿼리 -->
+    <select id="countAll" resultType="int">
+        SELECT COUNT(*) FROM TBL_COMMUNITY_AGE
+    </select>
+
+    <!-- 카테고리별 게시글 총 개수 조회하는 쿼리 -->
+    <select id="getTotalCountByCateNo" parameterType="int" resultType="int">
+        SELECT COUNT(*) FROM TBL_COMMUNITY_AGE
+        WHERE CATE_NO = #{cateNo}
+    </select>
+
+
 </mapper>

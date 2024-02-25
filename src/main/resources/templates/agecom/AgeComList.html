@@ -32,29 +32,34 @@
 <section class="list table-common con">
     <div class="men">
         <ul>
-            <li>
-                <a onclick="location.href='AgeComList?cateNo=13'">
-                    <span class="mental"> 10대 </span>
+            <li th:class="${cateNo == null ? 'selected-category' : ''}">
+                <a th:href="@{/agecom/AgeComList}">
+                    <span class="mental"> 전체보기 </span>
                 </a>
             </li>
             <li>
-                <a onclick="location.href='AgeComList?cateNo=14'">
-                    <span class="mental"> 20대 </span>
+                <a th:href="@{/agecom/AgeComList(cateNo=13)}">
+                    <span th:class="${cateNo == 13 ? 'selected-category' : ''}" class="mental"> 10대 </span>
                 </a>
             </li>
             <li>
-                <a onclick="location.href='AgeComList?cateNo=15'">
-                    <span class="mental"> 30대 </span>
+                <a th:href="@{/agecom/AgeComList(cateNo=14)}">
+                    <span th:class="${cateNo == 14 ? 'selected-category' : ''}" class="mental"> 20대 </span>
                 </a>
             </li>
             <li>
-                <a onclick="location.href='AgeComList?cateNo=16'">
-                    <span class="mental"> 40대 </span>
+                <a th:href="@{/agecom/AgeComList(cateNo=15)}">
+                    <span th:class="${cateNo == 15 ? 'selected-category' : ''}" class="mental"> 30대 </span>
                 </a>
             </li>
             <li>
-                <a onclick="location.href='AgeComList?cateNo=17'">
-                    <span class="mental"> 50대 </span>
+                <a th:href="@{/agecom/AgeComList(cateNo=16)}">
+                    <span th:class="${cateNo == 16 ? 'selected-category' : ''}" class="mental"> 40대 </span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/agecom/AgeComList(cateNo=17)}">
+                    <span th:class="${cateNo == 17 ? 'selected-category' : ''}" class="mental"> 50대 </span>
                 </a>
             </li>
         </ul>
@@ -80,6 +85,20 @@
         </tbody>
     </table>
 </section>
+<!-- 페이지네이션 -->
+<div class="pagination">
+    <ul>
+        <li th:if="${currentPage > 0}">
+            <a th:href="@{/agecom/AgeComList(page=${currentPage - 1})}">&laquo; 이전</a>
+        </li>
+        <li th:each="pageNum : ${#numbers.sequence(0, totalPages - 1)}" th:class="${pageNum == currentPage ? 'active' : ''}">
+            <a th:href="@{/agecom/AgeComList(page=${pageNum})}" th:text="${pageNum + 1}">1</a>
+        </li>
+        <li th:if="${currentPage < totalPages - 1}">
+            <a th:href="@{/agecom/AgeComList(page=${currentPage + 1})}">다음 &raquo;</a>
+        </li>
+    </ul>
+</div>
 <div class="btn">
     <button type="submit" id="btn1">
         <img src="" style="width: 50px; height: 50px;" alt="글쓰기" onclick="location.href='AgeComEnrollForm'"/>

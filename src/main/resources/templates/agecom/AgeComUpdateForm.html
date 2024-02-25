@@ -113,7 +113,7 @@
     <hr>
     <br>
     <div class="create">
-        <form action="/agecom/update" method="post" id="updateForm"  onsubmit="return showModificationAlert()">
+        <form action="/agecom/update" method="post" id="updateForm" enctype="multipart/form-data" onsubmit="return showModificationAlert()">
             <input type="hidden" name="ageComNo" th:value="${ageComDTO.ageComNo}">
             <label>
                 <input id = "ageComTitle" type="text" name="ageComTitle" th:value="${ageComDTO.ageComTitle}">
@@ -142,7 +142,7 @@
 
             <!-- 기존 이미지 보여주기 -->
             <div th:if="${ageComDTO.attachNewname}">
-                <img th:src="@{'/src/main/resources/static/attach/' + ${ageComDTO.attachNewname}}" alt="Attached Image" style="max-width: 100%; height: auto;">
+                <img th:src="@{'/attach/' + ${ageComDTO.attachNewname}}" alt="Attached Image" style="max-width: 100%; height: auto;">
             </div>
 
             <label>이미지 첨부 (이미지를 변경하려면 새 이미지를 선택하세요):

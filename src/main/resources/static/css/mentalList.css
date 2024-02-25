@@ -69,3 +69,7 @@ tr {
     border: 0px;
     display: inline-block;
 }
+
+.selected-category {
+    background-color: #ff7603; /* 선택된 카테고리의 배경색 */
+}
