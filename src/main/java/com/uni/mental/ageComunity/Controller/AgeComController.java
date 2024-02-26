@@ -1,5 +1,7 @@
 package com.uni.mental.ageComunity.Controller;
 
+import com.uni.mental.ageComunity.model.dto.AgeCmtDTO;
+import com.uni.mental.ageComunity.model.service.AgeCmtService;
 import com.uni.mental.ageComunity.model.service.AgeComService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,12 +38,16 @@ public class AgeComController {
     private final Path rootLocation = Paths.get("src/main/resources/static/attach");
     private final AgeComService ageComService;
 
-
     @Autowired
     public AgeComController(AgeComDAO ageComDAO, AgeComService ageComService) {
         this.ageComDAO = ageComDAO;
         this.ageComService = ageComService;
+        this.ageCmtService = ageCmtService; // 댓글 서비스 초기화
     }
+
+    @Autowired
+    private AgeCmtService ageCmtService;
+
 
     @GetMapping("/AgeComList")
     public String ageComList(@RequestParam(value = "cateNo", required = false) Integer cateNo,
@@ -70,7 +76,6 @@ public class AgeComController {
         return "agecom/AgeComList";
     }
 
-
     @GetMapping("/AgeComEnrollForm")
     public String AgeComEnrollForm(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -79,6 +84,7 @@ public class AgeComController {
         model.addAttribute("memberNick", memberNick);
         return "agecom/AgeComEnrollForm"; // Thymeleaf 템플릿 이름 반환
     }
+
     @GetMapping("/AgeComUpdateForm")
     public ModelAndView AgeComUpdateForm(@RequestParam("no") String no, ModelAndView mv){
         AgeComDTO ageComDTO = ageComDAO.selectOne(Integer.parseInt(no));
@@ -86,25 +92,34 @@ public class AgeComController {
         mv.setViewName("agecom/AgeComUpdateForm");
         return mv;
     }
-    @GetMapping("/AgeComDetailView")
-    public ModelAndView AgeComDetailView(@RequestParam("no") String no) {
-        // no 파라미터를 정수형으로 변환
-        int ageComNo = Integer.parseInt(no);
 
+
+    @GetMapping("/AgeComDetailView/{ageComNo}")
+    public ModelAndView AgeComDetailView(@PathVariable("ageComNo") int ageComNo) {
         // 조회수 업데이트 로직 실행
         ageComDAO.updateViewCount(ageComNo);
 
+        // 게시글 상세 정보 조회
         AgeComDTO ageComDTO = ageComDAO.selectOne(ageComNo);
+
+        // 댓글 리스트 조회
+        List<AgeCmtDTO> comments = ageCmtService.getCommentsByAgeComNo(ageComNo);
+
+        // 로거를 통해 댓글 목록 로깅
+        logger.info("Comments: " + comments);
+
         ModelAndView mv = new ModelAndView();
         mv.addObject("ageComDTO", ageComDTO);
-        mv.setViewName("agecom/AgeComDetailView");
+        mv.addObject("comments", comments); // 댓글 리스트 모델에 추가
+        mv.setViewName("agecom/AgeComDetailView"); // Thymeleaf 템플릿 파일 이름
         return mv;
     }
+
+
 
     @PostMapping("/regist")
     public String AgeComRegist(@ModelAttribute @Valid AgeComDTO ageComDTO, BindingResult result, @RequestParam("file") MultipartFile file) throws Exception {
         if (result.hasErrors()) {
-            logger.error("AgeCom 등록 중 유효성 검사에 실패했습니다: {}", result.getAllErrors());
             return "redirect:/error";
         }
 
@@ -126,16 +141,11 @@ public class AgeComController {
         return "redirect:/agecom/AgeComList";
     }
 
-
-
-
     @PostMapping("/update")
     public String AgeComUpdate(@ModelAttribute @Valid AgeComDTO ageComDTO, BindingResult result, @RequestParam(name = "file", required = false) MultipartFile file) throws Exception {
         if (result.hasErrors()) {
-            logger.error("게시글 수정 중 유효성 검사 실패: {}", result.getAllErrors());
             return "redirect:/error";
         }
-
         ageComService.updateAgeCom(ageComDTO, file); // 첨부파일 포함하여 업데이트
         return "redirect:/agecom/AgeComList";
     }
@@ -145,6 +155,5 @@ public class AgeComController {
         ageComDAO.deleteAgeCom(no);
         return "redirect:/agecom/AgeComList";
     }
-
 
 }

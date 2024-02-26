@@ -1,40 +1,57 @@
 package com.uni.mental.ageComunity.Controller;
 
+import com.uni.mental.ageComunity.model.dao.AgeComDAO;
 import com.uni.mental.ageComunity.model.dto.AgeCmtDTO;
+import com.uni.mental.ageComunity.model.dto.AgeComDTO;
 import com.uni.mental.ageComunity.model.service.AgeCmtService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/agecom")
 public class AgeCmtController {
 
     private final AgeCmtService ageCmtService;
+    private final AgeComDAO ageComDAO;
 
     @Autowired
-    public AgeCmtController(AgeCmtService ageCmtService) {
+    public AgeCmtController(AgeCmtService ageCmtService, AgeComDAO ageComDAO) {
         this.ageCmtService = ageCmtService;
+        this.ageComDAO = ageComDAO;
     }
 
     @PostMapping("/addComment")
     public String addComment(AgeCmtDTO comment) {
-        ageCmtService.addComment(comment);
-        return "redirect:/agecom/detail/" + comment.getAgeComNo();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            String memberNick = authentication.getName();
+            comment.setMemberNick(memberNick);
+            ageCmtService.addComment(comment);
+            return "redirect:/agecom/AgeComDetailView/" + comment.getAgeComNo();
+        } else {
+            return "redirect:/login";
+        }
     }
 
+
+
+
     @PostMapping("/deleteComment")
-    public String deleteComment(@RequestParam("ageCmtNo") Long ageCmtNo, @RequestParam("ageComNo") Long ageComNo) {
+    public String deleteComment(@RequestParam("ageCmtNo") int ageCmtNo, @RequestParam("ageComNo") int ageComNo) {
         ageCmtService.removeComment(ageCmtNo);
-        return "redirect:/agecom/detail/" + ageComNo; // 삭제 후 댓글이 속한 게시글 상세 페이지로 리다이렉트
+        return "redirect:/agecom/AgeComDetailView/" + ageComNo; // 삭제 후 댓글이 속한 게시글 상세 페이지로 리다이렉트
     }
 
     @PostMapping("/updateComment")
     public String updateComment(AgeCmtDTO comment) {
         ageCmtService.modifyComment(comment);
-        return "redirect:/agecom/detail/" + comment.getAgeComNo(); // 수정 후 댓글이 속한 게시글 상세 페이지로 리다이렉트
+        return "redirect:/agecom/AgeComDetailView/" + comment.getAgeComNo(); // 수정 후 댓글이 속한 게시글 상세 페이지로 리다이렉트
     }
 
 }

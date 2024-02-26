@@ -77,7 +77,7 @@
         <tbody>
         <tr th:each="agecom : ${ageComList}">
             <td th:text="${agecom.ageComNo}"></td>
-            <td><a th:href="@{AgeComDetailView(no=${agecom.ageComNo})}" th:text="${agecom.ageComTitle}"></a></td>
+            <td><a th:href="@{/agecom/AgeComDetailView/{ageComNo}(ageComNo=${agecom.ageComNo})}" th:text="${agecom.ageComTitle}"></a></td>
             <td th:text="${agecom.memberNick}"></td>
             <td th:text="${#dates.format(agecom.ageComDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
             <td th:text="${agecom.ageComViews}"></td>

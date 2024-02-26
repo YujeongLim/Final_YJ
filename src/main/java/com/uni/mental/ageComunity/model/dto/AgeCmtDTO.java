@@ -6,10 +6,9 @@ import java.util.Date;
 
 @Data
 public class AgeCmtDTO {
-    private Long ageCmtNo;
-    private Long ageComNo;
+    private int ageCmtNo;
+    private int ageComNo;
     private String memberNick;
     private String ageCmtDetail;
     private Date ageCmtDate;
-
 }

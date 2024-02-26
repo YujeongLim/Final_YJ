@@ -1,36 +1,15 @@
 package com.uni.mental.ageComunity.model.service;
 
-import com.uni.mental.ageComunity.model.dao.AgeCmtDAO;
 import com.uni.mental.ageComunity.model.dto.AgeCmtDTO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
-@Service
-public class AgeCmtService {
+public interface AgeCmtService {
 
-    private final AgeCmtDAO ageCmtDAO;
+    void addComment(AgeCmtDTO comment);
 
-    @Autowired
-    public AgeCmtService(AgeCmtDAO ageCmtDAO) {
-        this.ageCmtDAO = ageCmtDAO;
-    }
+    List<AgeCmtDTO> getCommentsByAgeComNo(int ageComNo);
 
-    public void addComment(AgeCmtDTO comment) {
-        ageCmtDAO.insertComment(comment);
-    }
+    void removeComment(int ageCmtNo);
 
-    public List<AgeCmtDTO> getComments(Long ageComNo) {
-        return ageCmtDAO.selectCommentsByAgeComNo(ageComNo);
-    }
-
-    public void removeComment(Long ageCmtNo) {
-        ageCmtDAO.deleteComment(ageCmtNo);
-    }
-
-    public void modifyComment(AgeCmtDTO comment) {
-        ageCmtDAO.updateComment(comment);
-    }
+    void modifyComment(AgeCmtDTO comment);
 }
-

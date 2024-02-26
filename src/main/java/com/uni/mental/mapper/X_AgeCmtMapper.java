@@ -5,7 +5,7 @@ import com.uni.mental.ageComunity.model.dto.AgeCmtDTO;
 import java.util.List;
 
 @Mapper
-public interface AgeCmtMapper {
+public interface X_AgeCmtMapper {
 
     @Insert("INSERT INTO TBL_COMM_AGE_COMMENT (AGECOM_NO, MEMBER_NICK, AGECMT_DETAIL, AGECMT_DATE) " +
             "VALUES (#{ageComNo}, #{memberNick}, #{ageCmtDetail}, NOW())")

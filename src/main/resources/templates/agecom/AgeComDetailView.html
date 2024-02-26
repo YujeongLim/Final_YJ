@@ -120,46 +120,63 @@
     </div>
 </div>
 <div class="but">
-    <a th:href="@{AgeComUpdateForm(no=${ageComDTO.ageComNo})}">수정하기</a>
-    <form action="/agecom/delete" method="post" onsubmit="return confirmDelete()">
-        <input type="hidden" name="no" th:value="${ageComDTO.ageComNo}">
+    <a th:href="@{/agecom/AgeComUpdateForm(no=${ageComDTO.ageComNo})}">수정하기</a>
+    <form th:action="@{/agecom/delete}" method="post" onsubmit="return confirmDelete()">
+    <input type="hidden" name="no" th:value="${ageComDTO.ageComNo}">
         <button type="submit">게시글 삭제</button>
     </form>
 </div>
+<!-- 댓글 -->
 <div class="reply">
-    <a>댓글쓰기</a>
-    <br>
-    <hr>
-    <br>
-    <label>
-        <textarea cols="50" rows="5" placeholder="댓글을 입력해주세요"></textarea>
-    </label>
-    <input class="btn" type="submit" value="등록">
-    <!-- 댓글 수정 폼 예시 -->
-    <form action="/agecom/updateComment" method="post">
-        <input type="hidden" name="ageCmtNo" value="댓글 고유 번호">
-        <textarea name="ageCmtDetail" readonly>기존 댓글 내용</textarea>
-        <button type="submit">수정</button>
+    <h3>댓글 작성</h3>
+    <form th:action="@{/agecom/addComment}" method="post">
+        <input type="hidden" name="ageComNo" th:value="${ageComDTO.ageComNo}">
+        <textarea name="ageCmtDetail" placeholder="댓글을 입력해주세요"></textarea>
+        <button type="submit">등록</button>
     </form>
-    <!-- 댓글 삭제 버튼 예시 -->
-    <form action="/agecom/deleteComment" method="post">
-        <input type="hidden" name="ageCmtNo" value="댓글 고유 번호">
-        <input type="hidden" name="ageComNo" value="게시글 고유 번호">
-        <button type="submit">삭제</button>
-    </form>
+</div>
+<div class="reply-list">
+    <h3>댓글 목록</h3>
+    <div th:if="${comments.isEmpty()}">
+        <p>댓글이 없습니다.</p>
+    </div>
+    <div th:each="comment : ${comments}" th:if="${comment != null}">
+        <div class="comment">
+            <p th:text="${comment.ageCmtDetail}">댓글 내용</p>
+            <span th:text="${comment.memberNick}">사용자명</span>
+            <span th:text="${#dates.format(comment.ageCmtDate, 'yyyy-MM-dd HH:mm:ss')}">댓글 작성일</span>
+
+            <div th:if="${comment.memberNick == #authentication?.name}">
+                <form th:action="@{/agecom/updateComment}" method="post" onsubmit="return confirmUpdate()">
+                    <input type="hidden" name="ageCmtNo" th:value="${comment.ageCmtNo}">
+                    <input type="hidden" name="ageComNo" th:value="${ageComDTO.ageComNo}">
+                    <textarea name="ageCmtDetail" th:text="${comment.ageCmtDetail}"></textarea>
+                    <button type="submit">수정</button>
+                </form>
+
+                <form th:action="@{/agecom/deleteComment}" method="post" onsubmit="return confirmDelete()">
+                    <input type="hidden" name="ageCmtNo" th:value="${comment.ageCmtNo}">
+                    <input type="hidden" name="ageComNo" th:value="${ageComDTO.ageComNo}"> <!-- 해당 댓글이 속한 게시물 번호 추가 -->
+                    <button type="submit">삭제</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 <div th:replace="common/footer :: footer"></div>
 <script>
+    function confirmUpdate() {
+        alert("수정이 완료되었습니다!");
+        return true;
+    }
+
     function confirmDelete() {
-        // 삭제 확인 요청
         var confirmResult = confirm("정말 삭제하시겠습니까?");
-        // 사용자가 '확인'을 누른 경우
         if (confirmResult) {
             alert("삭제가 완료되었습니다!");
-            return true; // 실제 삭제 처리를 진행
+            return true;
         }
-        // 사용자가 '취소'를 누른 경우
-        return false; // 삭제 처리 중단
+        return false;
     }
 </script>
 </body>
