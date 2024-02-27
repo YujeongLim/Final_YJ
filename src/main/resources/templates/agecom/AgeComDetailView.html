@@ -116,7 +116,7 @@
         <a th:text="${ageComDTO.ageComDetail}"></a>
     </div>
     <div th:if="${ageComDTO.attachNewname}">
-        <img th:src="@{'/attach/' + ${ageComDTO.attachNewname}}" alt="Attached Image" style="max-width: 100%; height: auto;">
+        <img th:src="@{'/attach/' + ${ageComDTO.attachNewname}}" alt="Attached Image" loading="lazy">
     </div>
 </div>
 <div class="but">

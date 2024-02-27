@@ -1,48 +1,99 @@
 @charset "UTF-8";
 
-h2{
+#wrap{
+    width: 90%;
+    margin: 0 auto;
+}
+
+h2 {
+    padding: 40px 0;
     font-weight: bold;
     text-align: center;
     font-size: 30px;
 }
 
-.text_box{
-    width: 100%;
-    height: 300px;
-    border: 2px solid #0d3699;
-    font-weight: bold;
-    text-align: center;
+.text_box {
+    position: relative;
+    margin: 0 auto;
+    padding: 60px;
     font-size: 24px;
+}
+.text_box h3 {
+    font-weight: bold;
+}
+
+.text_box p {
+    font-size: 16px;
+}
+
+.text_box .left_img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.text_box .right_img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.text_box img, .p_box {
+    float: left;
+}
+
+.p_box {
+    margin-top: 12px;
+    margin-left: 12px;
+}
+
+
+.p_notice {
+    display: flex;
+    margin: 10px 0;
+}
+
+.p_notice p {
+    display: inline-block;
+    margin-top: 4px;
+    margin-left: 4px;
+}
+
+
+.testSource {
+    margin: 10px 0;
+    padding: 20px;
+    background-color: #ddd;
+}
+
+.testSource p {
+    display: inline-block;
+    margin: 2px;
 }
 
 .checkup_container {
-    width: 80%;
-    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start; /* 모든 요소를 왼쪽으로 정렬 */
+    justify-content: flex-start; /* 요소를 왼쪽 정렬 */
+    margin: 0 -10px; /* 좌우측에 음수 마진 적용하여 자식 요소의 마진을 상쇄 */
+    padding: 20px 0;
 }
 
-.checkup_box {
-    width: calc(25% - 20px); /* 전체 너비의 25%에서 마진 값을 빼줍니다 */
-    margin: 0 10px 20px 0; /* 오른쪽과 아래에 마진 추가 */
-    display: inline-block; /* 블록 요소를 인라인처럼 배치 */
+.checkup_container .checkup_box {
+    width: calc(25% - 20px); /* 전체 너비의 25%에서 좌우 마진을 빼줌 */
+    margin: 10px; /* 모든 방향에 10px 마진 추가 */
 }
+
 
 .checkup_box img{
     width: 100%;
+    border-radius: 20px;
 }
 
 /* 4n번째 요소의 마진 오른쪽을 제거하여 행의 끝에 맞춤 */
 .checkout_container li:nth-child(4n) {
     margin-right: 0;
 }
-
-.p1{
-    width: 80%;
-    margin: 40px auto;
-}
-
 
 .black-background {
     background-color: rgba(0,0,0,0.5);

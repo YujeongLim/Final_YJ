@@ -10,7 +10,6 @@
 <body>
 <div class="black-background">
     <div class="checkup-background">
-        <h2></h2>
         <form id="checkupForm">
             <table>
                 <thead>
@@ -37,13 +36,30 @@
 <div th:replace="common/header :: header"></div>
 <div id="wrap">
     <h2 class="">질환별 자가검진</h2>
-    <div class="text_box">
-        <h3>질환별 자가검진(2차검진)</h3>
-        <img src="/img/self_icon01.png">
-        <p>정신건강 자가검진은 정신건강 전반에 대해 위험 영역 선별을 목표로 하는 1차 검진과 선별된 영역에 대한 정밀한 평가가 가능한 2차 검진으로 구성되어 있습니다.</p>
-        <p>특정 질환만 검진하기를 원하시면 원하는 항목을 선택하세요.</p>
+    <div class="text_box clearfix">
+        <img src="/img/left.png" class="left_img">
+            <img src="/img/self_icon01.png">
+            <div class="p_box">
+                <h3>질환별 자가검진(2차검진)</h3>
+                <br><p>정신건강 자가검진은 정신건강 전반에 대해 위험 영역 선별을 목표로 하는 1차 검진과 선별된 영역에 대한 정밀한 평가가 가능한 2차 검진으로 구성되어 있습니다.</p>
+                <p style="font-weight: bold; display: inline-block;">특정 질환만 검진하기를 원하시면 원하는 항목</p><p style="display: inline-block;">을 선택하세요.</p>
+            </div>
+        <img src="/img/right.png" class="right_img">
     </div>
-    <img src="/img/ico_notice.png"><p class="p1">원하는 검사를 선택하시면 상세 검사 페이지로 이동합니다.</p>
+    <div class="p_notice">
+        <img src="/img/ico_notice.png">
+        <p>원하는 검사를 선택하시면 상세 검사 페이지로 이동합니다.</p>
+    </div>
+    <!-- 판단기준 및 자가검진 출처 -->
+    <div class="testSource">
+        <p><결과 판단기준></p>
+        <br><p>60% 이상 : 위험, 전문가와의 상담을 권장합니다.</p>
+        <br><p>30% 이상 : 의심, 전문가와의 상담을 권장합니다.</p>
+        <br><p>그 외 : 양호한 상태입니다.</p>
+        <br><br><p>출처</p>
+        <br><p>- 한음 한방신경정신과한의원(https://haneumnetwork.co.kr)</p>
+        <br><p>- 원광보건대학교 학생상담센터(https://www.wu.ac.kr/councel/5197/subview.do)</p>
+    </div>
     <ul class="checkup_container">
         <!-- tbl_mental_list의 mental_name을 span에 출력 -->
         <li class="checkup_box" th:each="mentalName, idx : ${mentalNames}">
