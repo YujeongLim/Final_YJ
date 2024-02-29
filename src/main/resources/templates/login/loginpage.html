@@ -160,6 +160,7 @@
             align-items: center; /* 水平居中 */
             height: 500px; /* 设置容器高度 */
             margin-top: 60px;
+            padding-top: 450px;
         }
 
         .input-container {
@@ -174,11 +175,13 @@
 
         .socialLogin h2 {
             margin-bottom: 20px;
-            font-size: 24px;
+            font-size: 17px;
             color: #333;
         }
 
         .socialLogin ul {
+            display: flex;
+            justify-content: space-between;
             list-style-type: none;
             padding: 0;
             margin: 0;
@@ -187,6 +190,18 @@
         .socialLogin ul li {
             display: inline-block;
             margin-right: 10px;
+        }
+
+        .socialLogin ul li img {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+        }
+
+        .socialLogin ul li span{
+            display: block;
+            font-size: 12px;
+            text-align: center;
         }
 
         .socialLogin ul li:last-child {
@@ -234,27 +249,8 @@
 <body>
 
 <div th:replace="common/header :: header"></div>
-<div class="progress-container">
-    <div class="progress-bar" id="myBar">0%</div>
-</div>
-
-<div class="steps-container">
-    <div class="step" id="step1">
-        <span class="step-icon">약관동의</span>
-    </div>
-    <div class="step" id="step2">
-        <span class="step-icon">회원정보</span>
-    </div>
-    <div class="step  active" id="step3">
-        <span class="step-icon">가입성공</span>
-    </div>
-    <div class="step" id="step4">
-        <span class="step-icon">로그인</span>
-    </div>
-</div>
 <div class="container">
     <form action="/login/loginpage" method="post" id="loginForm">
-
         <div class="input-container">
             <div class="input-group-login">
                 ID*
@@ -272,80 +268,70 @@
         </div>
     </form>
     <div class="socialLogin">
-        <h2>Kakao Login</h2>
+        <h2>다른 계정으로 로그인하기</h2>
         <ul>
             <li onclick="kakaoLogin();">
-                <a href="javascript:void(0)">
-                    <span>카카오 로그인</span>
-                </a>
+                <button type="button">
+                    <img src="/img/k_icon.png">
+                    <span>Kakao</span>
+                </button>
             </li>
-            <li onclick="kakaoLogout();">
-                <a href="javascript:void(0)">
-                    <span>카카오 로그아웃</span>
-                </a>
-            </li>
-        </ul>
-
-        <h2>Google Login</h2>
-        <ul>
             <li id="GgCustomLogin">
-                <a href="javascript:void(0)">
-                    <span>Login with Google</span>
-                </a>
+                <button type="button">
+                    <img src="/img/g_icon.png">
+                    <span>Google</span>
+                </button>
             </li>
-        </ul>
-
-        <h2>Naver Login</h2>
-        <ul>
-            <li>
-                <a id="naverIdLogin_loginButton" href="javascript:void(0)">
-                    <span>네이버 로그인</span>
-                </a>
-            </li>
-            <li onclick="naverLogout();">
-                <a href="javascript:void(0)">
-                    <span>네이버 로그아웃</span>
-                </a>
+            <li id="naverIdLogin_loginButton">
+                <button type="button">
+                    <img src="/img/n_icon.png">
+                    <span>Naver</span>
+                </button>
             </li>
         </ul>
     </div>
 </div>
 <script>
     // Kakao SDK 초기화
-    Kakao.init('8599dbb702c380d1faa66d7af39a7430'); //발급받은 키 중 javascript키를 사용해준다.
-    console.log(Kakao.isInitialized()); // sdk초기화여부판단
+    Kakao.init('8599dbb702c380d1faa66d7af39a7430'); // 발급받은 키 중 JavaScript 키를 사용
+    console.log(Kakao.isInitialized()); // SDK 초기화 여부 판단
 
     // 카카오 로그인 함수
     function kakaoLogin() {
         Kakao.Auth.login({
-            success: function (response) {
-                console.log('로그인 성공:', response);
-                // 여기에 로그인 성공 후 처리할 코드를 추가하세요.
+            success: function(authObj) {
+                Kakao.API.request({
+                    url: '/v2/user/me',
+                    success: function(res) {
+                        // 서버로 사용자 정보 전송
+                        $.ajax({
+                            type: "POST",
+                            url: "/login/kakao-login",
+                            data: {
+                                "email": res.kakao_account.email,
+                                "nickname": res.properties.nickname
+                            },
+                            success: function(response) {
+                                // 메인 페이지로 리다이렉트
+                                window.location.href = "/"; // 메인 페이지로 리다이렉트
+                            },
+                            error: function(xhr, status, error) {
+                                alert("로그인 처리 중 문제가 발생했습니다.");
+                            }
+                        });
+                    },
+                    fail: function(error) {
+                        alert("로그인에 실패했습니다.");
+                    }
+                });
             },
-            fail: function (error) {
-                console.error('로그인 실패:', error);
+            fail: function(err) {
+                alert("로그인에 실패했습니다.");
             }
         });
     }
 
-    // 카카오 로그아웃 함수
-    function kakaoLogout() {
-        if (Kakao.Auth.getAccessToken()) {
-            Kakao.API.request({
-                url: '/v1/user/unlink',
-                success: function (response) {
-                    console.log('로그아웃 성공:', response);
-                    // 여기에 로그아웃 성공 후 처리할 코드를 추가하세요.
-                },
-                fail: function (error) {
-                    console.error('로그아웃 실패:', error);
-                }
-            });
-            Kakao.Auth.setAccessToken(undefined);
-        } else {
-            console.log('로그인된 사용자가 없습니다.');
-        }
-    }
+
 
     <!-- 구글 로그인 -->
     function init() {
@@ -430,25 +416,6 @@
 
 
     }
-
-    <!-- 기본 로그인 -->
-    let currentStep = 4;
-    function updateProgressBar() {
-        const progressBar = document.getElementById('myBar');
-        const stepElement = document.getElementById(`step${currentStep}`);
-        progressBar.style.width = `${(currentStep - 1) * 33.33}%`;
-
-        // 删除所有其他步骤的active类
-        const allSteps = document.querySelectorAll('.step');
-        allSteps.forEach(step => {
-            step.classList.remove('active');
-        });
-
-        stepElement.classList.add('completed', 'active');
-        currentStep++;
-    }
-    // 立即调用以激活第一步
-    updateProgressBar();
 </script>
 
 

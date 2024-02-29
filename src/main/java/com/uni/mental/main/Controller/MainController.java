@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class MainController {
 
-    @GetMapping(value={"/","/main"})
+    @GetMapping(value={"/","/main","/main/main"})
     public String main(){
         return "main/main";
     }

@@ -1,5 +1,7 @@
 package com.uni.mental.member.model.dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -8,6 +10,7 @@ public class MemberDto {
     private int no;
     private String id;
     private String pwd;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date bir;
     private String email;
     private String add;

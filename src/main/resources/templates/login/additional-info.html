@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="stylesheet" href="/css/basic.css">
+    <link rel="stylesheet" href="/css/custom_reset.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <title>추가 정보 입력</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 40%;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: white;
+            margin-top: 50px;
+            padding: 200px 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px; /* 추가 간격 */
+        }
+
+        input[type="email"],
+        input[type="checkbox"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #e59037;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="common/header :: header"></div>
+<form class="container" id="additionalInfoForm" action="/login/submit-additional-info" method="post">
+    <div class="form-group">
+        <label for="id">아이디</label>
+        <input type="text" id="id" name="email" th:value="${email}" disabled>
+    </div>
+    <div class="form-group">
+        <label for="password">비밀번호</label>
+        <input type="password" id="password" name="pwd" class="password">
+    </div>
+    <div class="form-group">
+        <label for="confirmPassword">비밀번호 확인</label>
+        <input type="password" id="confirmPassword" class="password">
+    </div>
+    <div class="form-group">
+        <label for="birth">생년월일</label>
+        <input type="date" id="birth" name="bir" class="birth">
+    </div>
+    <div class="form-group">
+        <label for="email">이메일</label>
+        <input type="email" id="email" name="email" th:value="${email}" disabled>
+    </div>
+    <div class="form-group">
+        <label for="address">주소</label>
+        <input type="text" id="address" name="add" class="address">
+    </div>
+    <div class="form-group">
+        <label for="mentalStatus">정신 건강 상태</label>
+        <select id="mentalStatus" name="mental" class="mental-status">
+            <option value="">상태 선택하세요</option>
+            <option value="우울증">우울증</option>
+            <option value="강박증">강박증</option>
+            <option value="조울증">조울증</option>
+            <option value="알코중독증">알코중독증</option>
+            <option value="PTSD">PTSD</option>
+            <option value="기타">기타</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="nickname">닉네임</label>
+        <input type="text" id="nickname" name="nick" th:value="${nickname}" disabled>
+    </div>
+    <input type="submit" value="제출">
+</form>
+<div th:replace="common/footer :: footer"></div>
+<script>
+    // 비번 일치하는지 확인
+    function confirmPassword() {
+        const password = $("#password").val();
+        const confirmPassword = $("#confirmPassword").val();
+
+        if (password === confirmPassword) {
+            $("#checkResult1").css("color", "green").text("비밀번호 일치합니다!");
+        } else {
+            $("#checkResult1").css("color", "red").text("비밀번호 불일치합니다.");
+        }
+    }
+
+    // 비번 확인 함수
+    $("#confirmPassword").keyup(confirmPassword);
+</script>
+</body>
+</html>

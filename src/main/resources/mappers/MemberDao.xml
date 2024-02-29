@@ -51,7 +51,7 @@
         WHERE MEMBER_ID = #{memberId}
     </select>
 
-    <insert id="enrollMember" parameterType="com.uni.mental.member.model.dto.MemberDto">
+    <insert id="enrollMember" parameterType="com.uni.mental.member.model.dto.MemberDto" useGeneratedKeys="true" keyProperty="no">
         INSERT INTO TBL_MEMBER
         (MEMBER_ID, MEMBER_PWD, MEMBER_BIR, MEMBER_EMAIL, MEMBER_ADD, MEMBER_MENTAL, MEMBER_NICK)
         VALUES
@@ -65,6 +65,26 @@
         SELECT COUNT(*) FROM TBL_MEMBER WHERE MEMBER_NICK = #{nick}
     </select>
 
+    <select id="findByEmail" resultMap="loginMemberResultMap" parameterType="java.lang.String">
+        SELECT
+            A.MEMBER_NO
+             , A.MEMBER_ID
+             , A.MEMBER_PWD
+             , A.MEMBER_BIR
+             , A.MEMBER_EMAIL
+             , A.MEMBER_ADD
+             , A.MEMBER_MENTAL
+             , A.MEMBER_NICK
+             , B.MEMBER_NO REF_MEMBER_NO
+             , B.AUTHORITY_NO REF_AUTHORITY_NO
+             , C.AUTHORITY_NO REF_AUTHORITY_NO2
+             , C.AUTHORITY_NAME
+             , C.AUTHORITY_DESC
+        FROM TBL_MEMBER A
+                 LEFT JOIN TBL_MEMBER_ROLE B ON(A.MEMBER_NO = B.MEMBER_NO)
+                 LEFT JOIN TBL_AUTHORITY C  ON(B.AUTHORITY_NO = C.AUTHORITY_NO)
+        WHERE MEMBER_EMAIL = #{email}
+    </select>
 
 
 </mapper>

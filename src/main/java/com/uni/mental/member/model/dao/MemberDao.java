@@ -12,6 +12,5 @@ public interface MemberDao {
     int idCheck(String id);
 
     int nicknameCheck(String nick);
-
-
+    MemberDto findByEmail(String email);
 }
