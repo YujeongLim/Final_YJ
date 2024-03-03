@@ -80,7 +80,6 @@
             margin: 10px;
             float: left;
         }
-
     </style>
 </head>
 
@@ -116,7 +115,7 @@
         <a th:text="${ageComDTO.ageComDetail}"></a>
     </div>
     <div th:if="${ageComDTO.attachNewname}">
-        <img th:src="@{'/attach/' + ${ageComDTO.attachNewname}}" alt="Attached Image" loading="lazy">
+        <img th:if="${ageComDTO.attachNewname}" th:src="@{'/attach/' + ${ageComDTO.attachNewname}}" class="responsive-image" alt="Attached Image" loading="lazy">
     </div>
 </div>
 <div class="but">
@@ -177,6 +176,24 @@
             return true;
         }
         return false;
+    }
+
+    window.addEventListener('load', function() {
+        const imgElement = document.querySelector('.responsive-image');
+
+        if (imgElement) {
+            adjustImageSize(imgElement);
+            window.addEventListener('resize', function() {
+                adjustImageSize(imgElement); // 브라우저 창 크기가 변경될 때마다 이미지 크기 조정
+            });
+        }
+    });
+
+    function adjustImageSize(img) {
+        const maxWidth = window.innerWidth * 0.8; // 브라우저 창 너비의 80%를 최대 이미지 너비로 설정
+        const maxHeight = window.innerHeight * 0.8; // 브라우저 창 높이의 80%를 최대 이미지 높이로 설정
+        img.style.maxWidth = maxWidth + 'px';
+        img.style.maxHeight = maxHeight + 'px';
     }
 </script>
 </body>

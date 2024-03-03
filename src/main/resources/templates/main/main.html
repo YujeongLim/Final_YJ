@@ -38,36 +38,41 @@
             </div>
             <div class="content1_2">
                 <div class="con1_2">
-                    <div class="w50">
-                        <a href="#">
-                            <div class="w50_p">
-                                <p>정신건강</p>
-                                <p>정보</p>
-                            </div>
-                            <img src="/img/con2_1.png">
-                        </a>
-                    </div>
-                    <div class="w50">
-                        <a href="">
-                            <div class="w50p">
+                    <div class="w50_con">
+                        <div class="w50">
+                            <a href="#">
                                 <div class="w50_p">
-                                    <p>질환별</p>
-                                    <p>자가검진</p>
+                                    <p>정신건강</p>
+                                    <p>정보</p>
                                 </div>
-                                <img src="/img/con2_2.png">
-                            </div>
-                        </a>
+                                <img src="/img/con2_1.png">
+                            </a>
+                        </div>
+                        <div class="w50_submenu">
+                            <img src="/img/submenu_icon1.png">
+                            <a href="">
+                                정신건강 질환별 정보
+                            </a>
+                        </div>
                     </div>
-                    <div class="w50">
-                        <a href="">
-                            <div class="w50p">
-                                <div class="w50_p">
-                                    <p>질환별</p>
-                                    <p>자가검진</p>
+                    <div class="w50_con">
+                        <div class="w50">
+                            <a href="">
+                                <div class="w50p">
+                                    <div class="w50_p">
+                                        <p>질환별</p>
+                                        <p>자가검진</p>
+                                    </div>
+                                    <img src="/img/con2_2.png">
                                 </div>
-                                <img src="/img/con2_2.png">
-                            </div>
-                        </a>
+                            </a>
+                        </div>
+                        <div class="w50_submenu">
+                            <img src="/img/submenu_icon2.png">
+                            <a href="">
+                                정신건강 관련 정보
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -113,9 +118,96 @@
         </div>
     </div>
     <div class="section3 clearfix">
-        <div class="s3_wrap">
+        <!-- 섹션3 왼쪽 박스-->
+        <div class="s3_wrap1">
             <div class="s_wrap">
-                <h2>커뮤니티</h2><h2 style="color: #f25f82;">&nbsp새소식</h2>
+                <h2>커뮤니티</h2><h2 style="color: #228eff;">&nbsp최신글</h2>
+            </div>
+            <div class="s_wrap2">
+                <table style="width: 100%; text-align: center;">
+                    <thead style="border-top: 1px solid #222; border-bottom: 1px solid #222;">
+                    <tr style="background: #ebf5ff;">
+                        <th style="width: 21%;">카테고리</th>
+                        <th style="width: 50%">제목</th>
+                        <th>글쓴이</th>
+                        <th style="width: 10%;">조회수</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+<!--                    <tr th:each="agecom : ${ageComList}">-->
+<!--                        <td th:text="${agecom.cateNo}"></td>-->
+<!--                        <td><a th:href="@{/agecom/AgeComDetailView/{ageComNo}(ageComNo=${agecom.ageComNo})}" th:text="${agecom.ageComTitle}"></a></td>-->
+<!--                        <td th:text="${agecom.memberNick}"></td>-->
+<!--                        <td th:text="${agecom.ageComViews}"></td>-->
+<!--                    </tr>-->
+                        <tr>
+                            <td><a href="#">연령별 커뮤니티</a></td>
+                            <td><a href="#">게시글 제목입니다1.</a></td>
+                            <td><a href="#">유정유정</a></td>
+                            <td><a href="#">777</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">질환별 커뮤니티</a></td>
+                            <td><a href="#">게시글 제목입니다2.</a></td>
+                            <td><a href="#">우엉</a></td>
+                            <td><a href="#">0</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">지역별 커뮤니티</a></td>
+                            <td><a href="#">게시글 제목입니다3.</a></td>
+                            <td><a href="#">송훈위</a></td>
+                            <td><a href="#">666</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">연령별 커뮤니티</a></td>
+                            <td><a href="#">게시글 제목입니다1.</a></td>
+                            <td><a href="#">유정유정</a></td>
+                            <td><a href="#">777</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">질환별 커뮤니티</a></td>
+                            <td><a href="#">게시글 제목입니다2.</a></td>
+                            <td><a href="#">우엉</a></td>
+                            <td><a href="#">0</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">지역별 커뮤니티</a></td>
+                            <td><a href="#">게시글 제목입니다3.</a></td>
+                            <td><a href="#">송훈위</a></td>
+                            <td><a href="#">666</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">연령별 커뮤니티</a></td>
+                            <td><a href="#">게시글 제목입니다1.</a></td>
+                            <td><a href="#">유정유정</a></td>
+                            <td><a href="#">777</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">질환별 커뮤니티</a></td>
+                            <td><a href="#">게시글 제목입니다2.</a></td>
+                            <td><a href="#">우엉</a></td>
+                            <td><a href="#">0</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">지역별 커뮤니티</a></td>
+                            <td><a href="#">게시글 제목입니다3.</a></td>
+                            <td><a href="#">송훈위</a></td>
+                            <td><a href="#">666</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">지역별 커뮤니티</a></td>
+                            <td><a href="#">게시글 제목입니다3.</a></td>
+                            <td><a href="#">송훈위</a></td>
+                            <td><a href="#">666</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- 섹션3 오른쪽 박스-->
+        <div class="s3_wrap2">
+            <div class="s_wrap">
+                <h2>공지사항</h2><h2 style="color: #f25f82;">&nbsp새소식</h2>
             </div>
             <div class="s_wrap2">
                 <div class="pink_con">
@@ -123,9 +215,7 @@
                         <p>2024</p>
                         <p class="s3_p">02.05</p>
                     </div>
-                    <div class="n_circle">
-                        N
-                    </div>
+                    <div class="n_circle">N</div>
                     <p class="s3_p">2024 재난심리지원 국제세미나</p>
                 </div>
                 <div class="clearfix flex">
@@ -135,7 +225,7 @@
                         <li>정신겅강의날 기념2</li>
                         <li>2024 정신건강의날 기념 심포지엄</li>
                     </ul>
-                    <ul class="s3_list">
+                    <ul class="s3_list" style="text-align: right;">
                         <li>2024.02.05</li>
                         <li>2024.02.05</li>
                         <li>2024.02.05</li>
@@ -225,6 +315,51 @@
                 }
             });
         });
+
+        $(document).ready(function() {
+            // s_wrap2 안의 a태그에 호버 이벤트 추가
+            $('.s_wrap2 a').hover(
+                function() {
+                    // 마우스를 올렸을 때
+                    $(this).closest('tr').css('background-color', 'rgb(255,253,192)');
+                },
+                function() {
+                    // 마우스를 뗐을 때
+                    $(this).closest('tr').css('background-color', '');
+                }
+            );
+
+            // 스크롤 이벤트로 애니메이션 트리거
+            $(window).on('scroll', function() {
+                // 현재 화면의 하단 위치
+                var viewportBottom = $(window).scrollTop() + $(window).height();
+
+                // con2 요소가 화면에 나타날 때 애니메이션 실행
+                $('.con2').each(function() {
+                    var $this = $(this),
+                        elementTop = $this.offset().top;
+
+                    // 요소가 화면에 나타나면 애니메이션 클래스 추가
+                    if (elementTop < viewportBottom - 100) { // 100px 오프셋으로 타이밍 조정
+                        $this.addClass('animate');
+                    }
+                });
+
+                // section3 요소가 화면에 나타날 때 slideInFromRight 애니메이션 실행
+                var s3Wrap1Top = $('.s3_wrap1').offset().top;
+                var s3Wrap2Top = $('.s3_wrap2').offset().top;
+
+                // s3_wrap1, s3_wrap2의 상단이 화면에 나타나면 slideInFromRight 애니메이션 실행
+                if (s3Wrap1Top < viewportBottom) {
+                    $('.s3_wrap1').addClass('slideInFromRight');
+                }
+                if (s3Wrap2Top < viewportBottom) {
+                    $('.s3_wrap2').addClass('slideInFromRight');
+                }
+            });
+
+        });
+
     </script>
 </body>
 </html>

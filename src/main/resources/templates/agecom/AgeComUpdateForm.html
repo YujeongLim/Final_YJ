@@ -140,13 +140,14 @@
 
             <input type="hidden" name="ageComViews" th:value="${ageComDTO.ageComViews}">
 
-            <!-- 기존 이미지 보여주기 -->
-            <div th:if="${ageComDTO.attachNewname}">
-                <img th:src="@{'/attach/' + ${ageComDTO.attachNewname}}" alt="Attached Image" loading="lazy" style="max-width: 100%; height: auto;">
+            <!-- 이미지 미리보기 -->
+            <div id="preview" th:if="${ageComDTO.attachNewname}">
+                <img id="previewImg" th:src="@{'/attach/' + ${ageComDTO.attachNewname}}" alt="Attached Image" loading="lazy" style="max-width: 100%; height: auto;">
             </div>
 
+            <!-- 이미지 첨부 input -->
             <label>이미지 첨부 (이미지를 변경하려면 새 이미지를 선택하세요):
-                <input type="file" name="file">
+                <input type="file" name="file" onchange="previewFile()">
             </label>
 
             <br>
@@ -160,6 +161,55 @@
     function showModificationAlert() {
         alert("수정이 완료되었습니다!");
         return true;
+    }
+
+
+    // 이미지 미리보기 및 크기 조정 함수
+    function previewFile() {
+        var file = document.querySelector('input[type=file]').files[0];
+        resizeImage(file, 800, 600, function (resizedDataUrl) {
+            const preview = document.getElementById('previewImg');
+            preview.src = resizedDataUrl;
+        });
+    }
+
+    // 이미지 크기 조정 함수
+    function resizeImage(file, maxWidth, maxHeight, callback) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var img = document.createElement("img");
+            img.onload = function () {
+                var canvas = document.createElement('canvas');
+                var ctx = canvas.getContext("2d");
+
+                var width = img.width;
+                var height = img.height;
+
+                // 이미지 비율 유지를 위한 크기 조정
+                if (width > height) {
+                    if (width > maxWidth) {
+                        height *= maxWidth / width;
+                        width = maxWidth;
+                    }
+                } else {
+                    if (height > maxHeight) {
+                        width *= maxHeight / height;
+                        height = maxHeight;
+                    }
+                }
+                canvas.width = width;
+                canvas.height = height;
+                ctx.drawImage(img, 0, 0, width, height);
+
+                // 캔버스에서 이미지 데이터 가져오기
+                var dataUrl = canvas.toDataURL('image/jpeg');
+                callback(dataUrl);
+            };
+            img.src = e.target.result;
+        };
+        if (file) {
+            reader.readAsDataURL(file);
+        }
     }
 </script>
 </body>

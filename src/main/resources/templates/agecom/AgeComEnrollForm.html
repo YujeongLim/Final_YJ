@@ -114,14 +114,17 @@
                 </select>
             </label>
             <br><br>
-            <label>이미지 첨부 :
-                <input type="file" name="file">
+            <!-- 리사이즈된 이미지 데이터를 저장할 숨겨진 입력 필드 추가 -->
+            <input type="hidden" id="resizedImageData" name="resizedImageData">
+            <label>이미지 첨부:
+                <input type="file" name="file" id="imageInput" onchange="previewImage();">
             </label>
-
+            <div id="imagePreviewContainer" style="display: none;">
+                <img id="imagePreview" src="#" alt="Image Preview" style="max-width: 500px; max-height: 500px;"/>
+            </div>
             <br>
             <button type="button" onclick="location.href='AgeComList'">취소하기</button>
             <button type="submit" >작성하기</button>
-
         </form>
     </div>
 </div>
@@ -131,6 +134,75 @@
         alert("등록이 완료되었습니다!");
         return true;
     }
+
+    function previewImage() {
+        var preview = document.getElementById('imagePreview');
+        var file = document.getElementById('imageInput').files[0];
+        var reader = new FileReader();
+        var previewContainer = document.getElementById('imagePreviewContainer');
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+            previewContainer.style.display = 'block';
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "";
+            previewContainer.style.display = 'none';
+        }
+    }
+
+    //이미지 크기 최적화
+    function resizeImage(file, maxWidth, maxHeight, callback) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var img = new Image();
+            img.onload = function () {
+                var canvas = document.createElement('canvas');
+                var ctx = canvas.getContext("2d");
+
+                var width = img.width;
+                var height = img.height;
+
+                // 이미지 비율 유지를 위한 크기 조정
+                if (width > height) {
+                    if (width > maxWidth) {
+                        height *= maxWidth / width;
+                        width = maxWidth;
+                    }
+                } else {
+                    if (height > maxHeight) {
+                        width *= maxHeight / height;
+                        height = maxHeight;
+                    }
+                }
+                canvas.width = width;
+                canvas.height = height;
+                ctx.drawImage(img, 0, 0, width, height);
+
+                // 캔버스에서 이미지 데이터 가져오기
+                var dataUrl = canvas.toDataURL('image/jpeg');
+                callback(dataUrl);
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    document.getElementById('imageInput').addEventListener('change', function (e) {
+        var file = e.target.files[0];
+        resizeImage(file, 800, 600, function (resizedDataUrl) {
+            // 리사이징된 이미지의 데이터 URL을 숨겨진 입력 필드의 값으로 설정
+            document.getElementById('resizedImageData').value = resizedDataUrl;
+
+            // 리사이징된 이미지의 데이터 URL을 미리보기 이미지의 src로 설정
+            document.getElementById('imagePreview').src = resizedDataUrl;
+            document.getElementById('imagePreviewContainer').style.display = 'block';
+        });
+    });
+
 </script>
 </body>
 
