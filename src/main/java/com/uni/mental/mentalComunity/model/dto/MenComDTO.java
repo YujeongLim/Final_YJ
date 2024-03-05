@@ -7,39 +7,31 @@ public class MenComDTO {
 
     private Integer no;
 
-    private String nickName;
+    private String id;
 
     private String title;
 
     private String content;
+    private Integer views;
+    private int cate;
 
     private Date date;
 
-    private int cate;
+    private String nick;
 
-    private Integer views;
+    private String image;
 
-    public MenComDTO(Integer no, String nickName, String title, String content, Date date, int cate, Integer views) {
+
+    public MenComDTO(Integer no, String id, String title, String content, Integer views, int cate, Date date, String nick,String image ) {
         this.no = no;
-        this.nickName = nickName;
+        this.id = id;
         this.title = title;
         this.content = content;
-        this.date = date;
-        this.cate = cate;
         this.views = views;
-    }
-
-    @Override
-    public String toString() {
-        return "MenComDTO{" +
-                "no=" + no +
-                ", nickName='" + nickName + '\'' +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", date=" + date +
-                ", cate=" + cate +
-                ", views=" + views +
-                '}';
+        this.cate = cate;
+        this.date = date;
+        this.nick = nick;
+        this.image = image;
     }
 
     public Integer getNo() {
@@ -50,12 +42,12 @@ public class MenComDTO {
         this.no = no;
     }
 
-    public String getNickName() {
-        return nickName;
+    public String getId() {
+        return id;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -74,12 +66,12 @@ public class MenComDTO {
         this.content = content;
     }
 
-    public Date getDate() {
-        return date;
+    public Integer getViews() {
+        return views;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setViews(Integer views) {
+        this.views = views;
     }
 
     public int getCate() {
@@ -90,11 +82,42 @@ public class MenComDTO {
         this.cate = cate;
     }
 
-    public Integer getViews() {
-        return views;
+    public Date getDate() {
+        return date;
     }
 
-    public void setViews(Integer views) {
-        this.views = views;
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getNick() {
+        return nick;
+    }
+
+    public void setNick(String nick) {
+        this.nick = nick;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    @Override
+    public String toString() {
+        return "MenComDTO{" +
+                "no=" + no +
+                ", id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", views=" + views +
+                ", cate=" + cate +
+                ", date=" + date +
+                ", nick='" + nick + '\'' +
+                ", image='" + image + '\'' +
+                '}';
     }
 }

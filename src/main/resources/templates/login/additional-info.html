@@ -120,10 +120,20 @@
         <label for="nickname">닉네임</label>
         <input type="text" id="nickname" name="nick" th:value="${nickname}" disabled>
     </div>
+    <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
     <input type="submit" value="제출">
 </form>
 <div th:replace="common/footer :: footer"></div>
 <script>
+    // 폼 제출 이벤트 리스너 추가
+    document.getElementById('additionalInfoForm').addEventListener('submit', function(e) {
+        // 폼 제출의 기본 동작을 방지
+        e.preventDefault();
+
+        // 실제 폼 제출을 수행
+        this.submit();
+    });
+
     // 비번 일치하는지 확인
     function confirmPassword() {
         const password = $("#password").val();

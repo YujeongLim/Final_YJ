@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+header{
+    padding-top: 46px;
+}
+
 .con {
     max-width: 950px;
     margin: auto;

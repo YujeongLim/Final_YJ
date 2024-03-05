@@ -15,8 +15,8 @@
         </ul>
         </th:block>
         <th:block sec:authorize="isAuthenticated()">
-            <li style="margin: 0;" class="welcome"><span sec:authentication="name"></span>환영합니다</li>
-            <li style="margin: 0; border-left: 1px solid #aaa;"><a href="/logout/logoutpage" style="color: #131a1f">로그아웃</a></li>
+            <li style="border-left: 1px solid #aaa; margin-right: 40px;" class="welcome"><a href="/logout/logoutpage">로그아웃</a></li>
+            <li class="welcome"><span sec:authentication="name"></span>님 환영합니다</li>
         </th:block>
     </div>
     <div id="header">
@@ -25,7 +25,7 @@
                 <div style="float: left">
                     <img src="/img/logo.png" class="logo" alt="">
                 </div>
-                <h1>정신건강정보포털</h1>
+                <h1>MentalHouse</h1>
             </a>
         </div>
         <ul>

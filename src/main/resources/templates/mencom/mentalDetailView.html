@@ -6,7 +6,20 @@
     <title>Insert title here</title>
     <link rel="stylesheet" href="/css/basic.css">
     <link rel="stylesheet" href="/css/custom_reset.css">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
     <style>
+        *{
+            padding:0;margin:0
+        }
+        li{
+            list-style:none
+        }
+        a {
+            text-decoration:none;
+            font-size:14px;
+        }
+
         .menu {
             width: 100%;
             overflow: hidden;
@@ -24,35 +37,29 @@
         .menu a {
             color: black;
         }
-
         .card{
             width:80%;
-            display : inline-block;
+            display : block;
             margin: 20px;
             margin-left: 10%;
             height: 500px;
         }
-
         .reply{
             width:80%;
             display : inline-block;
             margin: 20px;
             margin-left: 10%;
         }
-
         .title {
             font-size: 25px;
             float: left;
             margin: 10px;
             display: block;
         }
-
-        .title dd{
-            font-size: 15px;
-            display: block;
-            float: left;
-            margin: 5px;
+        .view{
+            float: right;
         }
+
 
         .title a {
             text-align: center;
@@ -62,11 +69,8 @@
 
         .line{
             width:100%;
-            border-bottom:0;
-            text-align: left;
-            margin-left : 0;
-        }
 
+        }
         .btn{
             height:78px;
             width: 100px;
@@ -74,11 +78,84 @@
             float: left;
             margin: 10px;
         }
-
         textarea{
             resize : none;
             margin: 10px;
             float: left;
+        }
+
+        .but{
+            width: 100%;
+            display: flex; /* 수정 및 삭제 버튼을 한 줄에 표시하는 스타일 추가 */
+            justify-content: flex-start; /* 왼쪽 정렬 */
+            margin-left: 120px;
+
+        }
+        .but button{
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            border-bottom: none;
+            background-color: white;
+            font-size: 14px;
+            margin: 0 5px;
+        }
+        .deletbtn{
+            margin-left: 10px;
+        }
+        #commentTable{
+            display: inline;
+        }
+
+
+        .commentOne{
+            width: 800px;
+            height: 100px;
+            margin: 20px;
+            border: 1px solid lightgray;
+            overflow: auto;
+            max-height: 200px;
+
+        }
+        .deleteComment{
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            display: inline;
+            float: right;
+            vertical-align: top;
+            background-color: white;
+        }
+        .comment{
+            float: left;
+        }
+        .title1 {
+            font-weight: bolder;
+        }
+        .content{
+            font-size: 20px;
+        }
+
+
+
+        li{
+            font-size: 15px;
+
+        }
+        .date{
+            width: 130px;
+            height: 0;
+        }
+        span{
+            font-size: 15px;
+            color: gray;
+        }
+        .title label{
+            font-size: 15px;
+            color: gray;
+        }
+        .date{
+            margin-left: 15px;
         }
 
     </style>
@@ -104,37 +181,146 @@
 </header>
 <div class="card">
 
-        <div class="title">
-            <h3 th:text="${mental.title}"></h3>
-            <dl>
-                <dd th:text="${mental.nickName}"></dd>
-                <dd th:text="${#dates.format(mental.date, 'yyyy-MM-dd HH-mm-ss')}"></dd>
-
-                <dd th:text="${mental.views}"></dd>
-            </dl>
-            <br>
-            <hr class="line">
-            <a th:text="${mental.content}"></a>
+    <div class="title">
+        <h3 class="title1" th:text="${mental.title}"></h3>
+        <div>
+            <span class="nick" th:text="${mental.nick}"></span>
+            <span class="date"th:text="${#dates.format(mental.date, 'yyyy-MM-dd HH:mm')}"></span>
+            <span style="margin-left:5px; color: #e9281d;" class="view" th:text="${mental.views}"></span>
+            <label class="view">조회수</label>
         </div>
+
+        <hr class="line"><br>
+        <img width="75%" th:src="@{'/image/' + ${mental.image}}"  class="image">
+        <div class="content" th:text="${mental.content}"></div> <!-- 이미지를 포함한 content를 표시하는 부분 -->
+
     </div>
-<div class="but">
-    <a th:href="@{mentalUpdateForm(no=${mental.no})}">수정하기</a>
-    <form action="/delete" method="post">
-        <input type="hidden" name="no" th:value="${mental.no}">
-        <button type="submit">게시글 삭제</button>
-    </form>
+
 </div>
+<div class="but">
+    <th:block th:if="${mental.id == user}">
+        <a th:href="@{mentalUpdateForm(no=${mental.no})}">
+            <input type="hidden" name="image" th:value="${mental.image}"/>
+            <button type="submit">수정</button>
+        </a>
+        <form action="/mencom/delete" method="post">
+            <input type="hidden" name="no" th:value="${mental.no}">
+            <button class="deletbtn" type="submit">삭제</button>
+        </form>
+    </th:block>
+</div>
+
 <div class="reply">
+    <form method="post" onsubmit="return saveComment()" id="commentForm">
     <a>댓글쓰기</a>
-    <br>
-    <hr>
-    <br>
+    <br><hr><br>
+    <input type="hidden" id="menNo" th:value="${mental.no}">
+
     <label>
-        <textarea cols="50" rows="5" placeholder="댓글을 입력해주세요"></textarea>
+        <textarea id="content" cols="50" rows="5" placeholder="댓글을 입력해주세요" maxlength="499"></textarea>
     </label>
-    <input class="btn" type="submit" value="등록">
+
+    <input class="btn" type="button" value="등록" onclick="return saveComment()">
+    </form>
+    <br><br><br><br><br>
+<div id="commentTable">
+    <div class="commentOne" th:each="comment : ${commentList}" >
+
+        <div class="comment">
+            <h1 class="nick" th:text="${comment.nick}"></h1>
+
+            <h3 class="date" th:text="${#dates.format(comment.date, 'yyyy-MM-dd HH-mm-ss')}"></h3>
+        </div>
+            <th:block th:if="${comment.id == user}">
+                <form class="deleteForm">
+                    <input type="hidden" th:value="${comment.no}" />
+                    <button type="button" class="deleteComment">삭제</button>
+                </form>
+            </th:block>
+
+        <p class="content" th:text="${comment.content}"></p>
+    </div>
+
+</div>
 </div>
 <div th:replace="common/footer :: footer"></div>
 </body>
+<script>
+    $(function () {
+        window.saveComment = function () {
+            console.log($("#menNo").val());
+
+
+            const formData = new FormData();
+            formData.append("menNo", $("#menNo").val());
+            formData.append("content", $("#content").val());
+
+            console.log(formData);
+
+            $.ajax({
+                url: "/insertComment",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: formData,
+            })
+                .done(function (fragment) {
+                    $('#commentTable').replaceWith(fragment);
+
+                    // 댓글을 삽입한 후에 댓글 리스트를 다시 불러오도록 수정
+                    $.get("/getCommentList", {menNo: $("#menNo").val()}, function(data) {
+                        $('#commentTable').html(data);
+
+                        $("#content").val('');
+                    });
+                });
+        };
+        $(document).on('click', '.deleteComment', function() {
+            var commentNo = $(this).closest('form').find('input[type=hidden]').val();
+
+            // Ajax 요청
+            $.ajax({
+                type: 'POST',
+                url: '/deleteComment',
+                data: { commentNo: commentNo },
+                success: function(response) {
+                    // 성공적으로 삭제된 경우 해당 댓글을 화면에서 제거
+                    $('#comment-' + commentNo).remove();
+
+                    // 삭제 후 알림창 표시
+                    var confirmResult = confirm('댓글을 삭제하였습니다!');
+
+                    // 확인을 받은 경우 페이지 새로고침
+                    if (confirmResult) {
+                        location.reload();
+                    }
+                },
+                complete: function() {
+                    // Ajax 요청이 완료된 후에 입력창 초기화
+                    $("#content").val('');
+                }
+            });
+        });
+        // 엔터 키를 눌렀을 때 댓글 저장 함수 호출
+        $('#content').keypress(function (e) {
+            if (e.which === 13) { // 13은 엔터 키의 keyCode입니다.
+                e.preventDefault(); // 엔터 키의 기본 동작 막기
+                saveComment(); // 댓글 저장 함수 호출
+
+                // 댓글 저장 후 입력창 초기화
+                $("#content").val('');
+            }
+        });
+
+        // 페이지 로드 시 댓글 리스트 가져와서 보여주기
+        $.get("/getCommentList", {menNo: $("#menNo").val()}, function(data) {
+            $('#commentTable').html(data);
+        });
+    });
+
+
+
+</script>
+
 
 </html>

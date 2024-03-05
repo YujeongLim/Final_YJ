@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="/css/basic.css">
     <link rel="stylesheet" href="/css/custom_reset.css">
     <style>
+        *{
+            padding:0;margin:0
+        }
+        li{
+            list-style:none
+        }
+        a {
+            text-decoration:none;
+            font-size:14px;
+        }
+
         .menu {
             width: 100%;
             overflow: hidden;
@@ -94,32 +105,30 @@
     <hr>
     <br>
     <div class="create">
-        <form action="/mencom/regist" method="post" id="enrollForm">
+        <form action="/mencom/regist" method="post" id="enrollForm" enctype="multipart/form-data">
             <label>
                 <input id = "title" type="text" name="title" placeholder="제목을 입력하세요">
             </label>
             <br>
             <br>
-
-
             <label>
                 <textarea cols="100" rows="15" id="content" name="content" style="display: inline-block; resize : none;" placeholder="내용을 1000자 내로 입력해주세요"maxlength="1000"></textarea>
             </label>
             <br><br>
             <label>카테고리 :
                 <select id="cate" name="cate">
-                    <option value="4">우울증</option>
-                    <option value="5">조울증</option>
-                    <option value="6">조현병</option>
-                    <option value="7">불면증</option>
-                    <option value="8">ADHD</option>
-                    <option value="9">그외 게시판</option>
+                    <option value="7">우울증</option>
+                    <option value="8">조울증</option>
+                    <option value="9">조현병</option>
+                    <option value="10">불면증</option>
+                    <option value="11">ADHD</option>
+                    <option value="12">그외 게시판</option>
                 </select>
             </label>
             <br><br>
-<!--            <label>이미지 첨부 :-->
-<!--                <input  type="file" name="file">-->
-<!--            </label>-->
+            <label>이미지 첨부 :
+                <input  type="file" name="image">
+            </label>
 
             <br>
             <button type="button" onclick="location.href='mentalList'">취소하기</button>
@@ -128,7 +137,7 @@
         </form>
     </div>
 </div>
-<div th:replace="common/footer :: footer"></div>
+
 </body>
 
 </html>

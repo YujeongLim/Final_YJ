@@ -276,6 +276,8 @@
                     <span>Kakao</span>
                 </button>
             </li>
+            <!--임시버튼-->
+            <button id="kakaoLogoutButton">Kakao Logout</button>
             <li id="GgCustomLogin">
                 <button type="button">
                     <img src="/img/g_icon.png">
@@ -312,8 +314,8 @@
                                 "nickname": res.properties.nickname
                             },
                             success: function(response) {
-                                // 메인 페이지로 리다이렉트
-                                window.location.href = "/"; // 메인 페이지로 리다이렉트
+                                // 리다이렉션 URL을 서버 응답에서 받아와서 해당 페이지로 리다이렉트
+                                window.location.href = response.redirectUrl;
                             },
                             error: function(xhr, status, error) {
                                 alert("로그인 처리 중 문제가 발생했습니다.");
@@ -330,6 +332,18 @@
             }
         });
     }
+
+    //카카오톡 로그아웃(임시)
+    document.getElementById('kakaoLogoutButton').addEventListener('click', function() {
+        if (Kakao.Auth.getAccessToken()) {
+            Kakao.Auth.logout(function() {
+                console.log('Successfully logged out from Kakao');
+                // Redirect to another page or display a message after logout
+                // window.location.href = "/logoutPage";
+                alert("You have been logged out.");
+            });
+        }
+    });
 
 
 

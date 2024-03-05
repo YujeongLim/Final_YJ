@@ -7,8 +7,133 @@
     <title>Title</title>
     <link rel="stylesheet" href="/css/basic.css">
     <link rel="stylesheet" href="/css/custom_reset.css">
-    <link rel="stylesheet" href="/css/mentalList.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        *{
+            padding:0;margin:0
+        }
+        li{
+            list-style:none
+        }
+        a {
+            text-decoration:none;
+            font-size:14px;
+        }
+        .con {
+            max-width: 950px;
+            margin: auto;
+        }
+        .menu {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 200px;
+        }
+
+        .menu > li {
+            width: 25%; /*20*5=100%*/
+            float: left;
+            text-align: center;
+            line-height: 40px;
+            background-color: lightgray;
+        }
+
+        .menu a {
+            color: black;
+        }
+
+        .mental{
+            float: right;
+            margin: 5px;
+        }
+
+
+
+        .table-common>table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+
+        .table-common table th, .table-common table td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        .list table {
+            border:none;
+            border-top:2px solid black;
+            border-bottom:2px solid black;
+        }
+
+        .list table th, .list table td {
+            border:none;
+        }
+
+        .list table td {
+            border-bottom:1px solid black;
+        }
+
+        .list table thead {
+            border-bottom:2px solid black;
+            background-color: whitesmoke;
+        }
+
+        tr {
+            text-align: center;
+        }
+        .btn{
+            width: 85.5%;
+            margin: 20px;
+        }
+        #btn1{
+            float: right;
+            width: 100px;
+            height: 60px;
+            background-color: gray;
+            border: 0px;
+            display: inline-block;
+
+        }
+        .page-link {
+            text-align: center;
+        }
+
+        .page-number {
+            display: inline-block;
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .page-number.active {
+            background-color: lightgray;
+            color: white;
+        }
+
+        .pagination-controls {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .pagination-controls button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: lightgray;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .pagination-controls button:hover {
+            background-color: lightgray;
+        }
+    </style>
 </head>
+
 <body>
 <div th:replace="common/header :: header"></div>
 <header class="header">
@@ -26,8 +151,9 @@
             <a onclick="location.href='mentalList'">질환별</a>
         </li>
     </ul>
-</header>
 
+</header>
+<br>
 
 <h1 class="con">게시판</h1>
 <br>
@@ -35,36 +161,45 @@
     <div class="men">
         <ul>
             <li>
+
                 <a onclick="location.href='mentalList'">
-                    <span class="mental"> 그 외 </span>
+                    <span class="mental"> 전체 </span>
                 </a>
             </li>
             <li>
-                <a onclick="location.href='mentalList'">
+                <a onclick="location.href='mentalList?cate=7'">
+                    <span class="mental"> 우울증 </span>
+                </a>
+            </li>
+            <li>
+                <a onclick="location.href='mentalList?cate=8'">
                     <span class="mental"> 불면증 </span>
                 </a>
             </li>
             <li>
-                <a onclick="location.href='mentalList'">
+                <a onclick="location.href='mentalList?cate=9'">
                     <span class="mental"> ADHD </span>
                 </a>
             </li>
             <li>
-                <a onclick="location.href='mentalList'">
+                <a onclick="location.href='mentalList?cate=10'">
                     <span class="mental"> 조현병</span>
                 </a>
             </li>
             <li>
-                <a onclick="location.href='mentalList'">
+                <a onclick="location.href='mentalList?cate=11'">
                     <span class="mental"> 조울증 </span>
                 </a>
             </li>
             <li>
-                <a onclick="location.href='mentalList'">
-                    <span class="mental"> 우울증 </span>
+                <a onclick="location.href='mentalList?cate=12'">
+                    <span class="mental"> 그 외 </span>
                 </a>
             </li>
         </ul>
+
+
+
     </div>
     <table>
         <thead>
@@ -74,29 +209,116 @@
             <th>글쓴이</th>
             <th>글 등록일</th>
             <th>조회수</th>
-
         </tr>
         </thead>
+
         <tbody>
-        <tr th:each="mental : ${mentalList}">
-            <td th:text="${mental.no}"></td>
-            <td><a th:href="@{mentalDetailView(no=${mental.no})}" th:text="${mental.title}"></a></td>
-            <td th:text="${mental.nickName}"></td>
-            <td th:text="${#dates.format(mental.date, 'yyyy-MM-dd HH-mm-ss')}"></td>
-            <td th:text="${mental.views}"></td>
-        </tr>
+
+<!--                 Thymeleaf로부터 받은 데이터를 이용하여 게시물 목록을 동적으로 생성-->
+                <tr th:each="mental : ${mentalList}" class="total_item" >
+                    <td th:text="${mental.no}"></td>
+                    <td>
+                       <a th:href="@{mentalDetailView(no=${mental.no})}" th:text="${mental.title}"></a>
+                    </td>
+                    <td th:text="${mental.nick}"></td>
+                    <td th:text="${#dates.format(mental.date, 'yyyy-MM-dd HH:mm')}"></td>
+                    <td th:text="${mental.views}"></td>
+                </tr>
+
         </tbody>
-
     </table>
+    <div class="pagination-container" align="center">
+        <!-- 이전 페이지로 이동하는 버튼 -->
+        <a href="#" class="first-page"><img src="/image/btn_first.png"></a>
+        <a href="#" class="prev-page"><img src="/image/btn_prev.png"></a>
 
+        <!-- 페이지 번호를 표시하는 부분 -->
+        <span class="page-link"></span>
+
+        <!-- 다음 페이지로 이동하는 버튼 -->
+        <a href="#" class="next-page"><img src="/image/btn_next.png"></a>
+        <a href="#" class="last-page"><img src="/image/btn_end.png"></a>
+    </div>
+    <div class="btn">
+        <button style="width: 80px; height: 25px; margin-left: 100%;" onclick="location.href='mentalEnrollForm'"><a>글쓰기</a></button>
+    </div>
 </section>
-<div class="btn">
-    <button type="submit" id="btn1">
 
-        <img src="/static/images/pngwing.com.png" style="width: 50px; height: 50px;" alt="글쓰기" onclick="location.href='mentalEnrollForm'"/>
 
-    </button>
-</div>
+
+<script>
+    $(document).ready(function() {
+        // 计算总页数
+        var totalPages = Math.ceil($('.total_item').length /15);
+
+        // 添加页码链接
+        addPageLinks(totalPages);
+
+        // 初始化显示第一页
+        showPage(1);
+
+        // 点击页码链接
+        $(document).on('click', '.page-number', function() {
+            var pageNumber = parseInt($(this).text());
+            showPage(pageNumber);
+        });
+
+        // 点击第一页按钮
+        $('.first-page').click(function() {
+            showPage(1);
+        });
+
+        // 点击上一页按钮
+        $('.prev-page').click(function() {
+            var currentPage = parseInt($('.page-link .active').text());
+            if (currentPage > 1) {
+                showPage(currentPage - 1);
+            }
+        });
+
+        // 点击下一页按钮
+        $('.next-page').click(function() {
+            var currentPage = parseInt($('.page-link .active').text());
+            if (currentPage < totalPages) {
+                showPage(currentPage + 1);
+            }
+        });
+
+        // 点击最后一页按钮
+        $('.last-page').click(function() {
+            showPage(totalPages);
+        });
+
+        function addPageLinks(totalPages) {
+            var pageLinks = '';
+            for (var i = 1; i <= totalPages; i++) {
+                pageLinks += '<a href="#" class="page-number">' + i + '</a>';
+            }
+            $('.page-link').html(pageLinks);
+        }
+
+        function showPage(pageNumber) {
+            // 隐藏所有项目
+            $('.total_item').hide();
+            // 计算当前页起始索引和结束索引
+
+            var selectedCategory = parseInt($('.category-filter').val());
+            if (!isNaN(selectedCategory)) {
+                $('.total_item').filter(':not([data-cate="' + selectedCategory + '"])').hide();
+            }
+
+            var startIndex = (pageNumber - 1) * 15;
+            var endIndex = startIndex + 15;
+            // 显示当前页的项目
+            $('.total_item').slice(startIndex, endIndex).show();
+            // 更新页码链接的样式
+            $('.page-number').removeClass('active');
+            $('.page-number').eq(pageNumber - 1).addClass('active');
+        }
+    });
+</script>
+
 <div th:replace="common/footer :: footer"></div>
 </body>
+
 </html>

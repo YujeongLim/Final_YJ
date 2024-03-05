@@ -7,6 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface MenComDAO {
+
     int registMenCom(MenComDTO menCom);
     MenComDTO selectOne(int no);
 
@@ -19,5 +20,11 @@ public interface MenComDAO {
     int deleteMencom(int no);
 
 
-//    List<MenComDTO> findAllViewCount(RowBounds rowBounds);
+
+    int updateViews(int no);
+
+
+    List<MenComDTO> findAllCate(int cate);
+
+    String findImageFileNameById(int no);
 }

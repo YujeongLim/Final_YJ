@@ -309,7 +309,9 @@
     </div>
 </form>
 
-<script>
+<!-- 타임리프를 사용하여 서버로부터 전달받은 tempEmail 값을 사용합니다. -->
+<script th:inline="javascript">
+
     // 전체 동의 체크박스 로직
     document.getElementById('agree-all').addEventListener('change', function (e) {
         var checkboxes = document.querySelectorAll('.checkbox');
@@ -320,11 +322,22 @@
 
     document.getElementById('terms-form').addEventListener('submit', function(e) {
         e.preventDefault(); // 폼의 기본 제출 동작을 방지
+
         // 필수 체크박스가 모두 선택되었는지 확인
         var allChecked = [...this.querySelectorAll('.checkbox:not(#agree-all)')].every(checkbox => checkbox.checked);
-        if (allChecked) {
-            // 모든 체크박스가 선택되었으면 enroll 페이지로 이동
-            window.location.href = 'enroll';
+        var tempEmail = [[${tempEmail}]]; // JSP/Thymeleaf 등 서버 사이드 템플릿에서 세션 값 주입
+
+        if (allChecked && tempEmail) {
+            // 모든 체크박스가 선택되었고 tempEmail 세션이 존재하면 'additional-info' 페이지로 이동
+            console.log("'additional-info' 페이지로 이동")
+            window.location.href = '/login/additional-info';
+        } else if (allChecked) {
+            // 모든 체크박스가 선택되었지만 tempEmail 세션이 없으면 'enroll' 페이지로 이동
+            console.log("tempEmail 세션이 없으면 'enroll' 페이지로 이동")
+            window.location.href = '/login/enroll';
+        } else {
+            // 필수 체크박스가 모두 선택되지 않았다면 경고 메시지 표시
+            alert('모든 약관에 동의해주세요.');
         }
     });
 </script>

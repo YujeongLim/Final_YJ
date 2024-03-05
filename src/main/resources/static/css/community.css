@@ -1,0 +1,154 @@
+@charset "UTF-8";
+
+*{
+    padding:0;margin:0
+}
+li{
+    list-style:none
+}
+a {
+    text-decoration:none;
+    font-size:14px;
+}
+
+.menu {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 200px;
+}
+
+.menu > li {
+    width: 25%; /*20*5=100%*/
+    float: left;
+    text-align: center;
+    line-height: 40px;
+    background-color: lightgray;
+}
+
+.menu a {
+    color: black;
+}
+.card{
+    width:80%;
+    display : block;
+    margin: 20px;
+    margin-left: 10%;
+    height: 500px;
+}
+.reply{
+    width:80%;
+    display : inline-block;
+    margin: 20px;
+    margin-left: 10%;
+}
+.title {
+    font-size: 25px;
+    float: left;
+    margin: 10px;
+    display: block;
+}
+.view{
+    float: right;
+}
+
+
+.title a {
+    text-align: center;
+    margin:30px;
+    font-size: 20px;
+}
+
+.line{
+    width:100%;
+
+}
+.btn{
+    height:78px;
+    width: 100px;
+    display: inline-block;
+    float: left;
+    margin: 10px;
+}
+textarea{
+    resize : none;
+    margin: 10px;
+    float: left;
+}
+
+.but{
+    width: 80%;
+    display: flex; /* 수정 및 삭제 버튼을 한 줄에 표시하는 스타일 추가 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    margin-left: 120px;
+
+}
+.but button{
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    background-color: white;
+    font-size: 14px;
+    margin: 0 5px;
+}
+.deletbtn{
+    margin-left: 10px;
+}
+#commentTable{
+    display: inline;
+}
+
+
+.commentOne{
+    width: 800px;
+    height: 100px;
+    margin: 20px;
+    border: 1px solid lightgray;
+    overflow: auto;
+    max-height: 200px;
+
+}
+.deleteComment{
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    display: inline;
+    float: right;
+    vertical-align: top;
+    background-color: white;
+}
+.comment{
+    float: left;
+}
+.title1 {
+    font-weight: bolder;
+}
+.content{
+    font-size: 20px;
+    margin: 20px;
+    margin-top: 35px;
+}
+
+li{
+    font-size: 15px;
+
+}
+
+span{
+    font-size: 15px;
+    color: gray;
+}
+.title label{
+    font-size: 15px;
+    color: gray;
+}
+.date{
+
+    display: inline;
+    font-size: 10px;
+}
+.nick{
+    display: inline;
+    margin: 10px;
+
+}
