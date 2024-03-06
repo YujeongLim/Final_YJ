@@ -15,3 +15,5 @@ PIVOT 절과 UNPIVOT 절
 cs지식하루에 5개씩
 *테이블명, 컬럼명 다 대문자인지 확인
 
+*** 카카오로 로그인시 csrf토큰 필요함, 모든 CRUD에 인풋 맨위에 써서 csrf토큰 보내기 
+<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
