@@ -38,7 +38,10 @@
 
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 sqld
-cs지식하루에 5개씩
+https://yunamom.tistory.com/370
+PIVOT 절과 UNPIVOT 절
 
+
+cs지식하루에 5개씩
 *테이블명, 컬럼명 다 대문자인지 확인
 
