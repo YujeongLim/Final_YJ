@@ -1,7 +1,7 @@
 package com.uni.mental.mapper;
 
 import org.apache.ibatis.annotations.*;
-import com.uni.mental.ageComunity.model.dto.AgeCmtDTO;
+import com.uni.mental.agecomunity.model.dto.AgeCmtDTO;
 import java.util.List;
 
 @Mapper

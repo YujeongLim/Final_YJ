@@ -4,20 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <title>header</title>
+
+
 </head>
 <body>
+
 <div th:fragment="header">
     <div id="header_login">
         <th:block sec:authorize="isAnonymous()">
-        <ul class="loginbox">
-            <li style="margin: 0;"><a href="/login/loginpage">로그인</a></li>
-            <li style="margin: 0; border-left: 1px solid #aaa;"><a href="/login/agreement">회원가입</a></li>
-        </ul>
+            <ul class="loginbox">
+                <li style="margin: 0;"><a href="/login/loginpage">로그인</a></li>
+                <li style="margin: 0; border-left: 1px solid #aaa;"><a href="/login/agreement">회원가입</a></li>
+            </ul>
         </th:block>
         <th:block sec:authorize="isAuthenticated()">
-            <li style="border-left: 1px solid #aaa; margin-right: 40px;" class="welcome"><a href="/logout/logoutpage">로그아웃</a></li>
+            <li style="border-left: 1px solid #aaa; margin-right: 40px;" class="welcome">
+
+
+<!--                <a href="/logout/logoutpage">로그아웃</a></li>-->
+                <a th:onclick="'javascript:kakaoLogout();'">로그아웃</a></li>
+
             <li class="welcome"><span sec:authentication="name"></span>님 환영합니다</li>
         </th:block>
+
+
     </div>
     <div id="header">
         <div class="logo">
@@ -77,5 +87,7 @@
         </ul>
     </div>
 </div>
+
 </body>
+
 </html>

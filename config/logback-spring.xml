@@ -1,5 +1,5 @@
 <configuration debug="false" scan="true" scanPeriod="30 seconds">
-    <contextName>com.uni.mental.ageComunity</contextName>
+    <contextName>com.uni.mental.agecomunity</contextName>
 
     <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
     <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
@@ -45,7 +45,7 @@
     <logger name="org.springframework" level="info"/>
 
     <!-- Log for Application -->
-    <logger name="com.uni.mental.ageComunity" level="trace"/>
+    <logger name="com.uni.mental.agecomunity" level="trace"/>
 
     <!-- Log for ROOT -->
     <root level="error">

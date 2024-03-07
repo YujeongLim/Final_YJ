@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import java.util.List;
 import java.util.Map;
@@ -46,7 +47,8 @@ public class SpringSecurityConfiguration {
         List<String> memberPermitList = permitListMap.get("memberPermitList");
 
         http
-                .csrf(csrf -> csrf.ignoringRequestMatchers("/login/kakao-login"))
+                .csrf(csrf -> csrf.disable())
+//                .csrf(csrf -> csrf.ignoringRequestMatchers("/login/kakao-login"))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(memberPermitList.toArray(new String[0])).hasAnyRole("MEMBER", "ADMIN")
                         .requestMatchers(adminPermitList.toArray(new String[0])).hasRole("ADMIN")
@@ -60,47 +62,16 @@ public class SpringSecurityConfiguration {
                         .failureUrl("/login/loginpage?error=true")
                 )
                 .logout(logout -> logout
-                        .logoutSuccessUrl("/login/loginpage")
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout/logoutpage"))
+                        .deleteCookies("JSESSIONID")
+                        .invalidateHttpSession(true)
+//                        .logoutSuccessHandler(kakaoLogoutSuccessHandler) // 로그아웃 성공 핸들러 등록
+                        .logoutSuccessUrl("/")
                 )
+
                 .exceptionHandling(exception -> exception.accessDeniedPage("/error/denied"));
 
         return http.build();
     }
-
-//    @Bean
-//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        Map<String, List<String>> permitListMap = authenticationService.getPermitListMap();
-//
-//        List<String> adminPermitList = permitListMap.get("adminPermitList");
-//        List<String> memberPermitList = permitListMap.get("memberPermitList");
-//
-//        http
-//                // CSRF 설정 수정: 카카오 로그인 처리 URL 예외 처리
-//                .csrf(csrf -> csrf
-//                        .ignoringRequestMatchers("/login/kakao-login") // CSRF 보호를 비활성화할 경로 지정
-//                )
-//                .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
-//                        .requestMatchers(memberPermitList.toArray(new String[0])).hasAnyRole("MEMBER", "ADMIN")
-//                        .requestMatchers(adminPermitList.toArray(new String[0])).hasRole("ADMIN")
-//                        .anyRequest().permitAll()
-//                )
-//                .formLogin(form -> form
-//                        .loginPage("/login/loginpage")
-//                        .usernameParameter("username")
-//                        .passwordParameter("password")
-//                        .defaultSuccessUrl("/")
-//                        .failureForwardUrl("/error/login")
-//                )
-//                .logout(logout -> logout
-//                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout/logoutpage"))
-//                        .deleteCookies("JSESSIONID")
-//                        .invalidateHttpSession(true)
-//                        .logoutSuccessUrl("/")
-//                )
-//                .exceptionHandling(exception -> exception.accessDeniedPage("/error/denied"));
-//
-//        return http.build();
-//    }
-
 
 }

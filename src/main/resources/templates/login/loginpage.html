@@ -251,6 +251,7 @@
 <div th:replace="common/header :: header"></div>
 <div class="container">
     <form action="/login/loginpage" method="post" id="loginForm">
+<!--        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
         <div class="input-container">
             <div class="input-group-login">
                 ID*
@@ -270,14 +271,17 @@
     <div class="socialLogin">
         <h2>다른 계정으로 로그인하기</h2>
         <ul>
+            <li onclick="kakaoLogout();">
+                <a href="javascript:void(0)">
+                    <span>카카오 로그아웃</span>
+                </a>
+            </li>
             <li onclick="kakaoLogin();">
                 <button type="button">
                     <img src="/img/k_icon.png">
                     <span>Kakao</span>
                 </button>
             </li>
-            <!--임시버튼-->
-            <button id="kakaoLogoutButton">Kakao Logout</button>
             <li id="GgCustomLogin">
                 <button type="button">
                     <img src="/img/g_icon.png">
@@ -333,20 +337,6 @@
         });
     }
 
-    //카카오톡 로그아웃(임시)
-    document.getElementById('kakaoLogoutButton').addEventListener('click', function() {
-        if (Kakao.Auth.getAccessToken()) {
-            Kakao.Auth.logout(function() {
-                console.log('Successfully logged out from Kakao');
-                // Redirect to another page or display a message after logout
-                // window.location.href = "/logoutPage";
-                alert("You have been logged out.");
-            });
-        }
-    });
-
-
-
     <!-- 구글 로그인 -->
     function init() {
         gapi.load('auth2', function() {
@@ -393,6 +383,14 @@
         }
     );
 
+    function naverLogout() {
+        openPopUp();
+        setTimeout(function() {
+            closePopUp();
+        }, 1000);
+
+
+    }
     naverLogin.init();
 
     window.addEventListener('load', function () {
@@ -422,13 +420,21 @@
         testPopUp.close();
     }
 
-    function naverLogout() {
-        openPopUp();
-        setTimeout(function() {
-            closePopUp();
-        }, 1000);
 
-
+    //카카오로그아웃
+    function kakaoLogout() {
+        if (Kakao.Auth.getAccessToken()) {
+            Kakao.API.request({
+                url: '/v1/user/unlink',
+                success: function (response) {
+                    console.log(response)
+                },
+                fail: function (error) {
+                    console.log(error)
+                },
+            })
+            Kakao.Auth.setAccessToken(undefined)
+        }
     }
 </script>
 

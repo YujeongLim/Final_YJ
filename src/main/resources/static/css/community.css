@@ -33,7 +33,7 @@ a {
     display : block;
     margin: 20px;
     margin-left: 10%;
-    height: 500px;
+    padding-bottom: 200px
 }
 .reply{
     width:80%;

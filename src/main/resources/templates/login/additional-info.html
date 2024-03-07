@@ -120,7 +120,6 @@
         <label for="nickname">닉네임</label>
         <input type="text" id="nickname" name="nick" th:value="${nickname}" disabled>
     </div>
-    <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
     <input type="submit" value="제출">
 </form>
 <div th:replace="common/footer :: footer"></div>
