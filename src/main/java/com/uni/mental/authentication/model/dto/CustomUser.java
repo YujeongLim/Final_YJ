@@ -34,7 +34,9 @@ public class CustomUser extends User {
         this.email = member.getEmail();
         this.add = member.getAdd();
         this.mental = member.getMental();
+        System.out.println("Setting nick: " + member.getNick()); // 할당 전 로깅
         this.nick = member.getNick();
+        System.out.println("Nick set to: " + this.nick); // 할당 후 로깅
         this.memberRoleList = member.getMemberRoleList();
     }
 
@@ -106,4 +108,5 @@ public class CustomUser extends User {
                 ", memberRoleList=" + memberRoleList +
                 '}';
     }
+
 }
