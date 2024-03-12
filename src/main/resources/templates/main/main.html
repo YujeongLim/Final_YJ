@@ -137,72 +137,14 @@
                     </tr>
                     </thead>
                     <tbody>
-<!--                    <tr th:each="agecom : ${ageComList}">-->
-<!--                        <td th:text="${agecom.cateNo}"></td>-->
-<!--                        <td><a th:href="@{/agecom/AgeComDetailView/{ageComNo}(ageComNo=${agecom.ageComNo})}" th:text="${agecom.ageComTitle}"></a></td>-->
-<!--                        <td th:text="${agecom.memberNick}"></td>-->
-<!--                        <td th:text="${agecom.ageComViews}"></td>-->
-<!--                    </tr>-->
-                        <tr>
-                            <td><a href="#">연령별 커뮤니티</a></td>
-                            <td><a href="#">게시글 제목입니다1.</a></td>
-                            <td><a href="#">유정유정</a></td>
-                            <td><a href="#">777</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">질환별 커뮤니티</a></td>
-                            <td><a href="#">게시글 제목입니다2.</a></td>
-                            <td><a href="#">우엉</a></td>
-                            <td><a href="#">0</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">지역별 커뮤니티</a></td>
-                            <td><a href="#">게시글 제목입니다3.</a></td>
-                            <td><a href="#">송훈위</a></td>
-                            <td><a href="#">666</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">연령별 커뮤니티</a></td>
-                            <td><a href="#">게시글 제목입니다1.</a></td>
-                            <td><a href="#">유정유정</a></td>
-                            <td><a href="#">777</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">질환별 커뮤니티</a></td>
-                            <td><a href="#">게시글 제목입니다2.</a></td>
-                            <td><a href="#">우엉</a></td>
-                            <td><a href="#">0</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">지역별 커뮤니티</a></td>
-                            <td><a href="#">게시글 제목입니다3.</a></td>
-                            <td><a href="#">송훈위</a></td>
-                            <td><a href="#">666</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">연령별 커뮤니티</a></td>
-                            <td><a href="#">게시글 제목입니다1.</a></td>
-                            <td><a href="#">유정유정</a></td>
-                            <td><a href="#">777</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">질환별 커뮤니티</a></td>
-                            <td><a href="#">게시글 제목입니다2.</a></td>
-                            <td><a href="#">우엉</a></td>
-                            <td><a href="#">0</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">지역별 커뮤니티</a></td>
-                            <td><a href="#">게시글 제목입니다3.</a></td>
-                            <td><a href="#">송훈위</a></td>
-                            <td><a href="#">666</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">지역별 커뮤니티</a></td>
-                            <td><a href="#">게시글 제목입니다3.</a></td>
-                            <td><a href="#">송훈위</a></td>
-                            <td><a href="#">666</a></td>
-                        </tr>
+                        <th:block th:each="post, status : ${posts}">
+                            <tr th:if="${status.count <= 10}">
+                                <td th:text="${post.cateName}"></td>
+                                <td th:text="${post.ageComTitle}"></td>
+                                <td th:text="${post.memberNick}"></td>
+                                <td th:text="${post.ageComViews}"></td>
+                            </tr>
+                        </th:block>
                     </tbody>
                 </table>
             </div>
@@ -216,23 +158,17 @@
                 <div class="pink_con">
                     <div class="com_box">
                         <p>2024</p>
-                        <p class="s3_p">02.05</p>
+                        <p class="s3_p" id="todayDate"></p>
                     </div>
                     <div class="n_circle">N</div>
                     <p class="s3_p">2024 재난심리지원 국제세미나</p>
                 </div>
                 <div class="clearfix flex">
                     <ul class="s3_list">
-                        <li>국립정신건강센터 '마음이음 힐링콘서트'</li>
-                        <li>정신건강의날 기념</li>
-                        <li>정신겅강의날 기념2</li>
-                        <li>2024 정신건강의날 기념 심포지엄</li>
+                        <li th:each="notice : ${notices}" th:text="${notice.title}"></li>
                     </ul>
                     <ul class="s3_list" style="text-align: right;">
-                        <li>2024.02.05</li>
-                        <li>2024.02.05</li>
-                        <li>2024.02.05</li>
-                        <li>2024.02.05</li>
+                        <li th:each="notice : ${notices}" th:text="${#dates.format(notice.date, 'yyyy.MM.dd')}"></li>
                     </ul>
                 </div>
             </div>
@@ -363,6 +299,14 @@
 
         });
 
+        // 공지사항부분 오늘날짜출력
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const today = new Date();
+            const month = (today.getMonth() + 1).toString().padStart(2, '0');
+            const day = today.getDate().toString().padStart(2, '0');
+            const formattedDate = `${month}.${day}`;
+            document.getElementById('todayDate').textContent = formattedDate;
+        });
     </script>
 <script type="text/javascript">
     Kakao.init('8599dbb702c380d1faa66d7af39a7430'); // 발급받은 키 중 JavaScript 키를 사용
